@@ -1,0 +1,6 @@
+ridgeback_usermanual.pdf
+*.aux
+*.log
+*.toc
+*.out
+*.gz
