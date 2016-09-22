@@ -19,9 +19,9 @@
 \pagestyle{fancyplain}
 \lfoot{Rev. 1.0.0}
 \rfoot{Warthog}
-\lhead{}         
-\chead{}              
-\rhead{}  
+\lhead{}
+\chead{}
+\rhead{}
 \renewcommand{\headrulewidth}{0pt}
 
 
@@ -31,7 +31,7 @@
 \tableofcontents
 
 \section{Introduction}
-Clearpath Robotics Warthog is a rugged, all-terrain unmanned ground vehicle capable of traveling on land and in water.  Warthog fully supports the Robot Operating System (ROS) and can be equipped with a variety of payloads, including sensors and manipulators, to accomodate a wide variety of robotics applications in mining, agriculture and environmental monitoring. This guide contains information about the setup, safe operation, and maintenance of your Warthog unmanned ground vehicle.
+Clearpath Robotics Warthog is a rugged, all-terrain unmanned ground vehicle capable of traveling on land and in water.  Warthog fully supports the Robot Operating System (ROS) and can be equipped with a variety of payloads, including sensors and manipulators, to accomodate a wide variety of robotics applications in mining, agriculture and environmental monitoring. This guide contains information about the setup, safe operation, and maintenance of your Warthog unmanned ground vehicle (UGV).
 
 \subsection{What's Included}
 
@@ -41,12 +41,13 @@ Included with each Warthog are the following:
   \item 1x Warthog Omnidirectional Robotic Platform
   \begin{itemize}
     \item{Onboard computer}
-    \item{User Integration Area with power, Ethernet, and USB connectivity}
+    \item{User Integration Area with power, Ethernet, Serial(RS232) and USB connectivity}
     \item{48V Lead Acid Battery Pack}
-    \item{Onboard Battery Charger}
+    \item{Battery Charger}
   \end{itemize}
   \item 1x Futaba Remote Control (R/C)
   \item 1x Warthog User Manual
+  \item 1x Wireless Stop Remote
 \end{itemize}
 
 
@@ -69,16 +70,16 @@ Please see \autoref{Warthog_overview} for a view of some of Warthog's key extern
 
 \pagebreak[4]
 \subsubsection{Battery Charger}
-Info about onboard battery charger
+Info about battery charger
 
 \subsubsection{Bilge Pump}
-Two bilge pumps are installed in each J5 rover. There is one situated in each of the drive units underneath the motor.  
+Two bilge pumps are installed in each Warthog UGV. There is one situated in each of the drive units underneath the motor.
 
 The bilge pumps are used to remove water from the main chassis and drive units. At initial startup, an audible sound can be heard from the bilge pumps being initiated. These pumps are an automatic pumping system that check for water levels inside the drive units. The pumps automatically come on every two minutes and check for water levels. If the water level inside the drive unit exceeds a predetermined level, the pumps will remain on, otherwise they will shut off. During prolonged use in water, some water may appear in the drive unit. This is normal and acceptable.
 
 <picture of pump from inside and outside>
 
-This outlet leads from the pump to the exterior of the J5 rover. It is used to remove excess water from the chassis and drive units. No obstructions should be placed in front of or around this area. Obstruction of water flow may result in damage to the internal electrical components and loss of function in the J5 rover.
+This outlet leads from the pump to the exterior of the Warthog UGV. It is used to remove excess water from the chassis and drive units. No obstructions should be placed in front of or around this area. Obstruction of water flow may result in damage to the internal electrical components and loss of function in the Warthog UGV.
 
 \subsubsection{User Bay}\label{userbay}
 
@@ -90,13 +91,13 @@ The User Bay provides access to the User Power panel, as well as USB and Etherne
 	\centering
 	\begin{tabular}{>{\columncolor{lightgrey}}>{\raggedright}m{.3\textwidth} p{.65\textwidth}} \hline
 
-	192.168.1.1 & Onboard PC (both ports, br0 network interface). \\ \hline
+	192.168.131.1 & Onboard PC (both ports, br0 network interface). \\ \hline
 
-	192.168.1.2 & Ethernet-connected MCU. \\ \hline
+	192.168.131.2 & Ethernet-connected MCU. \\ \hline
 
-	192.168.1.14 & Front-facing LIDAR. \\ \hline
+	192.168.131.14 & Front-facing LIDAR (optional). \\ \hline
 
-	192.168.1.13 & Rear-facing LIDAR (optional). \\ \hline
+	192.168.131.13 & Rear-facing LIDAR (optional). \\ \hline
 
 	\end{tabular}
 \newline
@@ -160,7 +161,13 @@ Key specifications of Warthog are shown in \autoref{systemspecs}.
 
 The first step is to power up your Warthog and have some fun driving it around! If you’re just opening up the shipping crate, you can unfold the ramp, and remove the ratchet straps which secure Warthog during shipping.
 
-Press the power button on the back of Warthog. Once the body lights are flashing red, clear the two stop buttons (if necessary), and press the blinking red stop reset button. In a moment, the platform should go to solid red lights in back, and solid white in front.
+Twist the power button on the back of Warthog. Once the body lights are flashing red, clear the two stop buttons (if necessary), and press the blinking red stop reset button. In a moment, the platform should go to solid red lights in back, and solid white in front.
+
+\subsection{Wireless Stop Remote}
+
+--Instructions on how to operate Warthog with Wireless Stop Remote -- Include labeled diagram of Wireless Stop Remote.
+
+If you’re not seeing any action, check Contact on \autoref{contact} to get in touch with support.
 
 \subsection{Futaba Controller}
 
@@ -268,11 +275,11 @@ Before entering the water it is important to ensure that:
   \item All Access panels are fastened down
 \end{itemize}
 
-Entrance and exit into the water should ideally be performed on a gradual incline to reduce the risk of flipping or taking on water. When entering the water, ensure that the J5 rover is driven in speed level 1. Once the J5 rover has entered the water the vehicle should be placed in speed level 3.
+Entrance and exit into the water should ideally be performed on a gradual incline to reduce the risk of flipping or taking on water. When entering the water, ensure that the Warthog UGV is driven in speed level 1. Once the Warthog UGV has entered the water the vehicle should be placed in speed level 3.
 
 \subsection{Pinch Points}
 
-When operating the J5 rover it is important to maintain a safe distance away from the unit. The suspension seen in Figure 3-5 has the ability to pivot.  Do not place fingers anywhere along the syspension link as it can result in injury. 
+When operating the Warthog UGV it is important to maintain a safe distance away from the unit. The suspension seen in Figure 3-5 has the ability to pivot.  Do not place fingers anywhere along the syspension link as it can result in injury.
 
 \subsection{Stop Buttons}
 
@@ -322,7 +329,7 @@ Like most robotic systems, Warthog has an onboard PC coupled to a custom microco
 \subsection{Mechanical Mounting}
 \label{mechanical}
 
-The payload integration area can be used to mount external payloads on top of the Warthog.   
+The payload integration area can be used to mount external payloads on top of the Warthog.
 
 \begin{figure}[!hbt]
   \centering
@@ -335,15 +342,15 @@ The payload integration area can be used to mount external payloads on top of th
 
 \begin{itemize}[nolistsep]
 
-\item 27.75” is the maximum allowed width of any installed payload (this assumes that the payload is also centered across the width of the rover chassis.
+\item 27.75” is the maximum allowed width of any installed payload (this assumes that the payload is also centered across the width of the UGV chassis.
 
-\item  No part of the payload may extend over the sheet metal housings of the drive units or into the small (~2”) gaps between the chassis and drive units. Damage to both the rover and the payload WILL result.
+\item  No part of the payload may extend over the sheet metal housings of the drive units or into the small (~2”) gaps between the chassis and drive units. Damage to both the UGV and the payload WILL result.
 
 \item  The chassis has a removable access cover measuring ~46.25” x 26.25”. This access cover is supported underneath by two adjustable cross members. Regardless of payload, it is imperative that both cross members remain installed (approximately evenly spaced) to provided required support to the access cover. Consider that any payload installed above the top deck will prevent access to the chassis through the access cover, without first removing the installed payload.
 
-\item  The rotation of the suspension differential link in the horizontal plane will allow the payload to extend beyond the chassis top deck in both fore and aft locations. The amount of this payload extension (overhang) is dependent on several factors, including the weight and method of attachment of the payload as well as the terrain in which the rover will operate. Ensure that the amount of overhanging payload allows the rover to operate safely and doesn’t contact the terrain, especially when crossing steep and/or deep gullies.
+\item  The rotation of the suspension differential link in the horizontal plane will allow the payload to extend beyond the chassis top deck in both fore and aft locations. The amount of this payload extension (overhang) is dependent on several factors, including the weight and method of attachment of the payload as well as the terrain in which the UGV will operate. Ensure that the amount of overhanging payload allows the UGV to operate safely and doesn’t contact the terrain, especially when crossing steep and/or deep gullies.
 
-\item  The available internal chassis volume is approximately 17.5” long x 26” wide x 9.5” high. This space is located at the center of the chassis between two battery packs. Consider that anything placed inside the chassis MUST be secured as to not move or shift during rover operation. Any payload secured inside the chassis must also be insulated from coming into contact with the battery wiring and terminals.
+\item  The available internal chassis volume is approximately 17.5” long x 26” wide x 9.5” high. This space is located at the center of the chassis between two battery packs. Consider that anything placed inside the chassis MUST be secured as to not move or shift during UGV operation. Any payload secured inside the chassis must also be insulated from coming into contact with the battery wiring and terminals.
 
 \end{itemize}
 
@@ -404,9 +411,9 @@ Always exercise caution and observe the following safety practices connecting, d
 
 \begin{itemize}[nolistsep]
 	\item Batteries are high voltage, high current
-	\item Battery packs must be properly fastened down to ensure they do not move when the Warthog is in operation.  
+	\item Battery packs must be properly fastened down to ensure they do not move when the Warthog is in operation.
 	\item Ensure that the battery packs are evenly distrubted throughout the Warthog to maximze stability.
-	\item Battery levels on the unit should be checked on a regular basis.  It is important to maintain the battery voltage at a suitable level for proper operation. 
+	\item Battery levels on the unit should be checked on a regular basis.  It is important to maintain the battery voltage at a suitable level for proper operation.
 	\item When additional battery packs are added to the system it is important to connect the positive terminal first to the main power of the Warthog before connecting ground.
 	\item When installing additional battery packs, disconnect the ground on all battery packs presently in the unit before connecting the positive terminal of the new battery packs.
 \end{itemize}
@@ -416,7 +423,7 @@ Always exercise caution and observe the following safety practices connecting, d
 When storing Warthog for long periods of time, its important to properly maintain the batteries to fully maximize their life.  Consider one of the following two procedures when placing Warthog in long-term storage:
 
 \begin{itemize}[nolistsep]
-	\item Fully charge Warthog, turn it off and put it into storage.  Once a week, connect power to the charger and allow the charger to top up the battery for an hour or so. 
+	\item Fully charge Warthog, turn it off and put it into storage.  Once a week, connect power to the charger and allow the charger to top up the battery for an hour or so.
 	\item Fully charge Warthog, turn it off and put it into storage, but leave the charger connected and powered the enitre time Warthog is in storage.  The charger will monitor the battery and will automatically charge it up as needed.
 \end{itemize}
 
