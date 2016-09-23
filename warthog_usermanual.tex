@@ -59,7 +59,7 @@ Please see \autoref{Warthog_overview} for a view of some of Warthog's key extern
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=1\linewidth]{Ridgeback_Rear_Drawing_Labeled.pdf}
+  \includegraphics[width=1\linewidth]{Warthog_Rear_Drawing_Labeled.pdf}
   \caption{Warthog Hardware Overview}
   \label{Warthog_overview}
 \end{figure}
@@ -165,13 +165,49 @@ Twist the power button on the back of Warthog. Once the body lights are flashing
 
 \subsection{Wireless Stop Remote}
 
---Instructions on how to operate Warthog with Wireless Stop Remote -- Include labeled diagram of Wireless Stop Remote.
+Inclued with the Warthog, is a wireless stop remote which is needed for operateration as shown in Figure \autoref{wireless-stop} below.
+If the wireless stop remote is out of range, it will cause the system to stop.
+Likewise, if the wireless stop remote is inactive for 15 minutes, it will cause the system to stop.
+To turn on the remote, hold down the red 'POWER' button till the battery and signal strength flash.
+The vehicle's lights will give an indication of the state of the stop system.
+To assert a stop, simply press the 'E-STOP' button which will be verified by the Warthog's lights.
+Similarly, to release the stop system, press 'E-STOP' followed by 'GO'.
+Additionally, pressing and holding 'GO' down for 2 seconds wether stopped or not, will initiate a power down of the on-board computer.
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=1.0\linewidth]{wireless-stop-remote.png}
+  \caption{Warthog's Wireless Stop Remote}
+  \label{wireless-stop}
+\end{figure}
+
 
 If you’re not seeing any action, check Contact on \autoref{contact} to get in touch with support.
 
 \subsection{Futaba Controller}
 
---Instructions on how to operate Warthog with Futaba -- Include labeled diagram of Futaba controller.
+The long range remote control (RC) Futaba radio transmitter can be used to tele-operate the Warthog.
+To begin, slide the power switch to the on position which is labelled in Figure \autoref{fubata}.
+Caution, the speed adjustment knob should be turned initially all the way to the left while familiarizing yourself with the transmitter.
+The position of the speed adjustment scale is show in Figure \autoref{futaba-screen} as 'CH4'.
+The transmitter needs to be enabled which is done using the Enable/Disable switch that is a three position switch were only the down position enables it.
+The left joy stick is used for the forward and reverse motion of the robot and the right is used for turning.
+
+
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=1.0\linewidth]{futaba.pdf}
+  \caption{Futaba Radio Transmitter}
+  \label{futaba}
+\end{figure}
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=1.0\linewidth]{futaba.pdf}
+  \caption{Futaba Radio Transmitter Screen}
+  \label{futaba-screen}
+\end{figure}
 
 If you’re not seeing any action, check Contact on \autoref{contact} to get in touch with support.
 
@@ -198,14 +234,14 @@ Now that Warthog is on the wireless network, you can access it via SSH or as a r
 If your network resolves hostnames properly, connecting should be a matter of executing the following two lines in your desktop (or sourcing a script containing these lines):
 
 \begin{lstlisting}
-export ROS_MASTER_URI=http://cpr-Warthog:11311  # Your robot's hostname
-export ROS_IP=10.25.0.102                         # Your computer's wireless IP address
+export ROS_MASTER_URI=http://cpr-warthog:11311    # Your robot's hostname
+export ROS_IP=192.168.131.1                        # Your computer's wireless IP address
 \end{lstlisting}
 
 If your network doesn't resolve hostnames, you may need to add the following line to your \lstinline{/etc/hosts} file:
 
 \begin{lstlisting}
-10.25.0.101 cpr-Warthog                         # The robot's wireless IP address.
+192.168.131.1 cpr-warthog                         # The robot's wireless IP address.
 \end{lstlisting}
 
 Once you believe everything is set up correctly, try running \lstinline{rostopic list}, which will verify that your machine can see the robot's ROS master, and \lstinline{rostopic echo /mcu/status}, which will verify that the robot PC can see your machine in order to stream topics to it.
@@ -228,13 +264,13 @@ To command or observe Warthog from your desktop computer, first set up a basic R
 When your ROS install is set up, install the Warthog desktop packages:
 
 \begin{lstlisting}
-sudo apt-get install ros-indigo-Warthog-desktop
+sudo apt-get install ros-indigo-warthog-desktop
 \end{lstlisting}
 
 Once your remote access to Warthog's ROS master is configured (as above), you can launch rviz, the standard ROS robot visualization tool:
 
 \begin{lstlisting}
-roslaunch Warthog_viz view_robot.launch
+roslaunch warthog_viz view_robot.launch
 \end{lstlisting}
 
 From within rviz, you can use interactive markers to drive Warthog, you can visulize its published localization estimate, and you can visualize any attached sensors which have been added to its robot description XML (URDF).
@@ -320,7 +356,7 @@ Like most robotic systems, Warthog has an onboard PC coupled to a custom microco
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.75\linewidth]{Ridgeback-logic-conn.pdf}
+  \includegraphics[width=0.75\linewidth]{Warthog-logic-conn.pdf}
   \caption{System Architecture}
   \label{systemarchitecture}
 \end{figure}
@@ -370,7 +406,7 @@ The three white Molex user power receptacles located in the User Bay are capable
 
 \begin{figure}[!h]
   \centering
-  \includegraphics[width=1.0\linewidth]{Ridgeback_UserPower_SOLID.pdf}
+  \includegraphics[width=1.0\linewidth]{Warthog_UserPower_SOLID.pdf}
   \caption{Warthog Power User Panel}
   \label{userpower}
 \end{figure}
