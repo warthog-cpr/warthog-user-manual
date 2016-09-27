@@ -325,24 +325,21 @@ Always ensure the Stop button is accessible at all times. Avoid mounting payload
 
 \subsection{Electrical System}
 
-Warthog is powered by two lead-acid (PbSO4) deep-cycle AGM batteries, similar to the type found in electric wheelchairs, golf carts, and other vehicles. Warthog's battery is capable of delivering 2000W. This gives Warthog's motors their great performance, however, it is also enough power to cause severe bodily harm. Always use caution when operating Warthog to avoid personal injury or property damage.  To ensure safety, please observe the following precautions:
+The largest electrical safety consideration with the Warthog system is the VBat connection. This is pulled straight from the batteries, hence can have a voltage of 48V (depleted) - 62V (Charging) and can be used to power large external devices. This voltage can cause electrical shock if directly contacted, and is fused internally with an inline fuse at 20A. In general, take care to connect or disconnect devices preferably only when the entire system is powered off via the external switch on the rear (main power switch). 
+
+Included with the Warthog are several "dummy" connectors, to allow the user to keep unused connections securely blocked. Take note that triggering an E-Stop condition only disables voltage to the SEVCON drivers and motors, not the rest of the system. 
+
+The labeled status LEDS on the user panels indicate status of the system voltages. If an LED is not lit, most likely a system fuse has blown, and contacting Clearpath is the best option.
+
+To ensure saftey, please also observe the following precautions:
 
 \begin{itemize}[nolistsep]
 	\item Do not tamper with the battery terminals or wiring.
-	\item Do not tamper with the fuse panel, except to check and change the fuses, and to connect and disconnect the 	battery plug.
-	\item Always replace fuses with the same type and rating to ensure continued protection against risk of fires.
 	\item Consult Clearpath Robotics support if you need to service the battery pack.
 	\item Do not lay tools or other objects on top of the battery.
 	\item Do not move the robot while charging the battery.
-	\item Charge the battery only with the integrated charger installed by Clearpath Robotics.
+	\item Charge the battery only with the charger provided by Clearpath Robotics.
 	\item Please dispose of the batteries properly, or return the battery to Clearpath Robotics to do so.
-\end{itemize}
-
-\subsection{Lifting and Transport}
-
-\begin{itemize}[nolistsep]
-	\item Ensure that Warthog's Stop button is engaged when transporting short distances and powered off when transporting longer distances
-	\item Do not push the robot at more than 0.5 m/s (1.6 ft/s) or damage to the motor controls may occur
 \end{itemize}
 
 
