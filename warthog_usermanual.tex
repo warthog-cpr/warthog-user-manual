@@ -245,19 +245,40 @@ See \url{http://wiki.ros.org/warthog_base} for information on commanding the bod
 
 \subsection{Wireless Access}
 
-To get Warthog connected to your local wifi, you must first access the internal computer using a wired connection. Open the User Bay, and connect to one of the the network ports with a standard ethernet cable. Now, set your laptop’s ethernet port to a static IP such as \lstinline{192.168.131.51}, and connect via SSH to \lstinline{administrator@192.168.131.1}. The default password is \lstinline{clearpath}.
+To connect to Warthog connect to one of the the network ports with a standard ethernet cable. Now, set your laptop’s ethernet port to a static IP such as \lstinline{192.168.131.51}, and connect via SSH to \lstinline{administrator@192.168.131.1}. The default password is \lstinline{clearpath}.
 
-Once connected via wire, execute \lstinline{connmanctl} to enter the command line interface for Connman, from which you can configure Warthog to either join an existing network, or supply its own standalone access point. An example session to connect to an existing network:
+Additionally, you can connect to the Warthog's Access Point (AP) by setting a static IP as well. To do this in Ubuntu, follow the steps below:
+\begin{enumerate}
+  \item Click on the Wifi icon in the upper-right corner of your screen, and select \textbf{Edit Connections}
+  \item In the \textbf{Network Connections} window, click \textbf{Add}, select \textbf{Wi-Fi},  and then click \textbf{Create}
+  \item Fill out the \textbf{SSID} of the Warthog's AP as shown in Figure \autoref{wifi-ssid}
+  \item Select the \textbf{Wi-Fi Security} tab and then change the \textbf{Security} to \lstinline{WPA & WPA2 Personal} as in Figure \autoref{wifi-security}
+  \item Fill in the default password is \lstinline{clearpath}
+  \item Select the \textbf{IPv4 Settings} tab and then change the \textbf{Method} to \lstinline{Manual} as detailed in Figure \autoref{wifi-ip}
+  \item Click the \textbf{Add} button to add a new address
+  \item Enter a \lstinline{192.168.131.51} as the static IP under the \textbf{Address} column, and enter \lstinline{255.255.255.0} under the \textbf{NetMask} column, and then select \textbf{Save}
+\end{enumerate}
 
-\begin{lstlisting}
-connmanctl> enable wifi
-connmanctl> scan wifi
-connmanctl> services
-connmanctl> agent on
-connmanctl> connect wifi_123456_123456789123456789_managed_psk
-\end{lstlisting}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\linewidth]{wifi-ssid.png}
+  \caption{Static Wireless SSID Configuration}
+  \label{wifi-ssid}
+\end{figure}
 
-After the \lstinline{connect} line, connman will prompt you for your network's passphrase. Once connected, connman will remember and attempt to reconnect on successive power-ons.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\linewidth]{wifi-security.png}
+  \caption{Static Wireless Security Configuration}
+  \label{wifi-security}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\linewidth]{wifi-ip.png}
+  \caption{Static Wireless IP Configuration}
+  \label{wifi-ip}
+\end{figure}
 
 \subsection{Remote ROS Connectivity}
 
