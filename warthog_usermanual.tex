@@ -31,14 +31,14 @@
 \tableofcontents
 
 \section{Introduction}
-Clearpath Robotics Warthog is a rugged, all-terrain unmanned ground vehicle capable of traveling on land and in water.  Warthog fully supports the Robot Operating System (ROS) and can be equipped with a variety of payloads, including sensors and manipulators, to accomodate a wide variety of robotics applications in mining, agriculture and environmental monitoring. This guide contains information about the setup, safe operation, and maintenance of your Warthog unmanned ground vehicle (UGV).
+Clearpath Robotics Warthog is a rugged, all-terrain unmanned ground vehicle capable of traveling on land and in water.  Warthog fully supports the Robot Operating System (ROS) and can be equipped with a variety of payloads, including sensors and manipulators, to accomodate a wide variety of robotics applications in mining, agriculture and environmental monitoring. This guide contains information about the setup, safe operation, and maintenance of your Warthog unmanned ground vehicle (UGV).  Please read the entire manual and safety warnings prior to operating the Warthog.
 
 \subsection{What's Included}
 
 Included with each Warthog are the following:
 
 \begin{itemize}[nolistsep]
-  \item 1x Warthog Omnidirectional Robotic Platform
+  \item 1x Warthog Amphibious Robotic Platform
   \begin{itemize}
     \item{Onboard computer}
     \item{User Integration Area with power, Ethernet, Serial(RS232) and USB connectivity}
@@ -81,9 +81,9 @@ The bilge pumps are used to remove water from the main chassis and drive units. 
 
 This outlet leads from the pump to the exterior of the Warthog UGV. It is used to remove excess water from the chassis and drive units. No obstructions should be placed in front of or around this area. Obstruction of water flow may result in damage to the internal electrical components and loss of function in the Warthog UGV.
 
-\subsubsection{User Bay}\label{userbay}
+\subsubsection{User Integration Area}\label{userbay}
 
-The User Bay provides access to the User Power panel, as well as USB and Ethernet ports, and additional space for stowing user equipment.  The electrical panel can be used to power your payloads. The USB3 ports are connected directly to the onboard PC, and the ethernet ports connect to the onboard network switch. To connect a device to the onboard network, it's suggested to give it a static IP in the \lstinline{192.168.131.x} subnet, avoiding IPs in use by the following pre-existing devices:
+The User Bay provides access to the User Power panel, as well as USB, Serial, and Ethernet ports.  The electrical panel can be used to power your payloads. The USB3 and ethernet  ports are connected directly to the onboard PC. To connect a device to the onboard network, it's suggested to give it a static IP in the \lstinline{192.168.131.x} subnet, avoiding IPs in use by the following pre-existing devices:
 
 \bgroup
 \def\arraystretch{1.2}%
@@ -159,7 +159,7 @@ Key specifications of Warthog are shown in \autoref{systemspecs}.
 
 \section{Getting Started}
 
-The first step is to power up your Warthog and have some fun driving it around! If you’re just opening up the shipping crate, you can unfold the ramp, and remove the ratchet straps which secure Warthog during shipping.
+The first step is read the manual and safety warnings.  The next step is to power up your Warthog and have some fun driving it around! If you’re just opening up the shipping crate and remove the ratchet straps which secure Warthog during shipping.
 
 Twist the power button on the back of Warthog. Once the body lights are flashing red, clear the two stop buttons (if necessary), and press the blinking red stop reset button. In a moment, the platform should go to solid red lights in back, and solid white in front.
 
@@ -168,11 +168,11 @@ Twist the power button on the back of Warthog. Once the body lights are flashing
 Inclued with the Warthog, is a wireless stop remote which is needed for operateration as shown in Figure \autoref{wireless-stop} below.
 If the wireless stop remote is out of range, it will cause the system to stop.
 Likewise, if the wireless stop remote is inactive for 15 minutes, it will cause the system to stop.
-To turn on the remote, hold down the red 'POWER' button till the battery and signal strength flash.
+To turn on the remote, hold down the red 'POWER' button untill the battery and signal strength flash.
 The vehicle's lights will give an indication of the state of the stop system.
-To assert a stop, simply press the 'Stop' button which will be verified by the Warthog's lights.
+To assert a stop, simply press the 'Stop' button which will be verified by the Warthog's lights flashing red.
 Similarly, to release the stop system, press 'Stop' followed by 'GO'.
-Additionally, pressing and holding 'GO' down for 2 seconds wether stopped or not, will initiate a power down of the on-board computer.
+Additionally, pressing and holding 'GO' down for 5 seconds stopped or not, will initiate a power down of the on-board computer.
 
 \begin{figure}[!h]
   \centering
@@ -188,9 +188,9 @@ If you’re not seeing any action, check Contact on \autoref{contact} to get in 
 
 The long range remote control (RC) Futaba radio transmitter can be used to tele-operate the Warthog.
 To begin, slide the power switch to the on position which is labelled in Figure \autoref{fubata}.
-Caution, the speed adjustment knob should be turned initially all the way to the left while familiarizing yourself with the transmitter.
-The position of the speed adjustment scale is show in Figure \autoref{futaba-screen} as 'CH4'.
-The transmitter needs to be enabled which is done using the Enable/Disable switch that is a three position switch were only the down position enables it.
+Caution, the speed adjustment knob should be turned initially all the way to the left while familiarizing yourself with the transmitter and slowly increasing it to get it moving.
+The position of the speed adjustment scale is shown in  \autoref{futaba-screen} as 'CH4'.
+The transmitter needs to be enabled which is done using the Enable/Disable switch that is a three position switch where only the down position enables it.
 The left joy stick is used for the forward and reverse motion of the robot and the right is used for turning.
 
 
@@ -297,7 +297,7 @@ If your network doesn't resolve hostnames, you may need to add the following lin
 192.168.131.1 cpr-warthog                         # The robot's wireless IP address.
 \end{lstlisting}
 
-Once you believe everything is set up correctly, try running \lstinline{rostopic list}, which will verify that your machine can see the robot's ROS master, and \lstinline{rostopic echo /mcu/status}, which will verify that the robot PC can see your machine in order to stream topics to it.
+Once everything is set up correctly, try running \lstinline{rostopic list}, which will verify that your machine can see the robot's ROS master, and \lstinline{rostopic echo /mcu/status}, which will verify that the robot PC can see your machine in order to stream topics to it.
 
 Please contact Clearpath Support if guidance is required in selecting and executing a remote access strategy.
 For more general details on how ROS works over TCP with multiple machines, please see:
@@ -350,7 +350,7 @@ Warthog is a powerful, heavy, fast moving robotic platform. Please read the foll
 
 \subsection{General Warnings}
 
-Warthog is a rugged and high-performance vehicle. For the safety of yourself and others, always conduct initial experiments and software development with the vehicle raised off the ground. Place a wooden crate, a set of sawhorses, a sturdy storage tub, or any other solid flat structure having a height greater than 6 inches under Warthog to keep the wheels clear of the ground (“up on blocks”).
+Warthog is a rugged and high-performance vehicle. For the safety of yourself and others, always conduct initial experiments and software development with the motors not engaged.  Whenever the robot is not being operated and the motors are engaged, keep it in a stop state.  Do not ride of the vehicle, it can accelerate and brake quickley.
 
 When starting out, favor slower wheel speeds. Warthog's control loops can accurately maintain velocities as low as 0.1 m/s. Operating at such speeds will give you more time to react if things don’t go quite as you expect.
 
@@ -368,7 +368,7 @@ Entrance and exit into the water should ideally be performed on a gradual inclin
 
 \subsection{Pinch Points}
 
-When operating the Warthog UGV it is important to maintain a safe distance away from the unit. The suspension seen in Figure 3-5 has the ability to pivot.  Do not place fingers anywhere along the syspension link as it can result in injury.
+When operating the Warthog UGV it is important to maintain a safe distance away from the unit. The suspension seen in Figure 3-5 has the ability to pivot.  Do not place fingers anywhere along the suspension link as it can result in injury.
 
 \subsection{Stop Buttons}
 
@@ -382,9 +382,9 @@ Always ensure the Stop button is accessible at all times. Avoid mounting payload
 
 \subsection{Electrical System}
 
-The largest electrical safety consideration with the Warthog system is the VBat connection. This is pulled straight from the batteries, hence can have a voltage of 48V (depleted) - 62V (Charging) and can be used to power large external devices. This voltage can cause electrical shock if directly contacted, and is fused internally with an inline fuse at 20A. In general, take care to connect or disconnect devices preferably only when the entire system is powered off via the external switch on the rear (main power switch).
+The largest electrical safety consideration with the Warthog system is the VBat connection. This is pulled straight from the batteries, it may have a voltage of 48V (depleted) - 62V (Charging) and can be used to power large external devices. This voltage can cause electrical shock if directly contacted, and is fused internally with an inline fuse at 20A. In general, take care to connect or disconnect devices preferably only when the entire system is powered off via the external switch on the rear (main power switch).
 
-Included with the Warthog are several "dummy" connectors, to allow the user to keep unused connections securely blocked. Take note that triggering an Stop condition only disables voltage to the SEVCON drivers and motors, not the rest of the system.
+Included with the Warthog are several "dummy" connectors, to allow the user to keep unused connections securely blocked. Take note that triggering an Stop condition only disables voltage to the SEVCON drivers and motors, not the rest of the system which includes the connectors.  Please keep the "dummy" connectors attached unless an actual connector is attached.  Avoid working directly with the pins on the connector as it may short ciruit.
 
 The labeled status LEDS on the user panels indicate status of the system voltages. If an LED is not lit, most likely a system fuse has blown, and contacting Clearpath is the best option.
 
@@ -396,7 +396,7 @@ To ensure saftey, please also observe the following precautions:
   \item Do not lay tools or other objects on top of the battery.
   \item Do not move the robot while charging the battery.
   \item Charge the battery only with the charger provided by Clearpath Robotics.
-  \item Please dispose of the batteries properly, or return the battery to Clearpath Robotics to do so.
+  \item Please dispose of the batteries properly, or return the batteries to Clearpath Robotics to do so.
 \end{itemize}
 
 
@@ -492,9 +492,9 @@ For the best experience, consider purchasing supported accessories from Clearpat
 
 \subsubsection{General}
 
-Warthog contains 48V lead-acid or lithium-ion battery packs. Each battery pack typically consists of four 12V leadacid or lithium-ion batteries.
+Warthog contains 48V lead-acid or lithium-ion battery packs. Each battery pack consists of four 12V leadacid or lithium-ion batteries.
 
-Battery configuration may vary with each unit. Only batteries of the same type, capacity, brand and model should be added in parallel to the system. In order to maximize performance it is important to ensure that the battery level across each set of lead-acid or lithium-ion batteries is within 0.1-0.2V of each other. If the battery packs exceed this tolerance, it is advised to charge them to within tolerance before wiring these packs
+Battery configuration may vary with each unit. In order to maximize performance it is important to ensure that the battery level across each set of lead-acid or lithium-ion batteries is within 0.1-0.2V of each other. If the battery packs exceed this tolerance, it is advised to charge them to within tolerance before wiring these packs
 in parallel. The overall battery life will vary depending upon the usage of the unit.
 
 Always exercise caution and observe the following safety practices connecting, disconnecting or handling batteries:
