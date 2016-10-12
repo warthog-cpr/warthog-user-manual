@@ -59,7 +59,7 @@ Please see \autoref{Warthog_overview} for a view of some of Warthog's key extern
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=1\linewidth]{Warthog_Rear_Drawing_Labeled.pdf}
+  \includegraphics[width=1\linewidth]{Warthog_Drawing_Labeled.pdf}
   \caption{Warthog Hardware Overview}
   \label{Warthog_overview}
 \end{figure}
@@ -81,9 +81,9 @@ The bilge pumps are used to remove water from the main chassis and drive units. 
 
 This outlet leads from the pump to the exterior of the Warthog UGV. It is used to remove excess water from the chassis and drive units. No obstructions should be placed in front of or around this area. Obstruction of water flow may result in damage to the internal electrical components and loss of function in the Warthog UGV.
 
-\subsubsection{User Integration Area}\label{userbay}
+\subsubsection{User Integration Area}\label{userarea}
 
-The User Bay provides access to the User Power panel, as well as USB, Serial, and Ethernet ports.  The electrical panel can be used to power your payloads. The USB3 and ethernet  ports are connected directly to the onboard PC. To connect a device to the onboard network, it's suggested to give it a static IP in the \lstinline{192.168.131.x} subnet, avoiding IPs in use by the following pre-existing devices:
+The User Integration Area provides access to the User Power panel, as well as USB, Serial, and Ethernet ports.  The electrical panel can be used to power your payloads. The USB3 and ethernet  ports are connected directly to the onboard PC. To connect a device to the onboard network, it's suggested to give it a static IP in the \lstinline{192.168.131.x} subnet, avoiding IPs in use by the following pre-existing devices:
 
 \bgroup
 \def\arraystretch{1.2}%
@@ -213,7 +213,7 @@ If you’re not seeing any action, check Contact on \autoref{contact} to get in 
 
 
 \pagebreak[4]
-\subsubsection{Body Lights}
+\subsection{Body Lights}
 
 Warthog includes eight RGB body lights, stacked in a pair on each corner of the chassis. These lights express system status according to \autoref{bodylights}, but in the absence of one of the low-level conditions, they can be commanded from ROS to display indications from autonomy or other higher-level software.
 
@@ -364,7 +364,6 @@ Before entering the water it is important to ensure that:
   \item All Access panels are fastened down
 \end{itemize}
 
-Entrance and exit into the water should ideally be performed on a gradual incline to reduce the risk of flipping or taking on water. When entering the water, ensure that the Warthog UGV is driven in speed level 1. Once the Warthog UGV has entered the water the vehicle should be placed in speed level 3.
 
 \subsection{Pinch Points}
 
@@ -421,12 +420,6 @@ Like most robotic systems, Warthog has an onboard PC coupled to a custom microco
 
 The payload integration area can be used to mount external payloads on top of the Warthog.
 
-\begin{figure}[!hbt]
-  \centering
-  \includegraphics[width=0.75\linewidth]{Payload_Integration_Plate.pdf}
-  \caption{Warthog Payload Integration}
-  \label{payloadplate}
-\end{figure}
 
 \subsubsection{Payload Integration Guidelines}
 
@@ -456,25 +449,49 @@ Permanent damage resulting from custom modifications to the mounting plate is no
 \subsection{Electrical Integration}
 \label{electrical}
 
-The three white Molex user power receptacles located in the User Bay are capable of supplying 5Vdc, 12Vdc, and unregulated battery voltage (approximately 24Vdc) for powering Warthog's payloads. See \autoref{userpower} for an labeled illustration and the pin assignments. The total draw permitted on each rail is 5A. The mating connector for these Molex Mini Fit Jr (tm) receptacles is \lstinline{39-01-2040}, available on Digikey as \lstinline{M3701-ND}. Ensure you select contact appropriate for the gauge of wire used.
+The user power receptacles located in the User Integration Area are capable of supplying 5Vdc, 12Vdc, and unregulated battery voltage (approximately 48Vdc) for powering Warthog's payloads. See \autoref{userpower} for an labeled illustration and \autoref{userpowerpinout} the pin assignments. Ensure you select contact appropriate for the gauge of wire used.  The electrical system for the chassis can be seen in \autoref{elec-chassis}. Additionally, left and right drive units electrical system is decribed in \autoref{elec-left} and \autoref{elec-right} respectivelty.
 
 \begin{figure}[!h]
   \centering
-  \includegraphics[width=1.0\linewidth]{Warthog_UserPower_SOLID.pdf}
+  \includegraphics[width=1.0\linewidth]{User_Panel_Labeled.pdf}
   \caption{Warthog Power User Panel}
   \label{userpower}
 \end{figure}
 
-The single red and black Anderson connector pair provides unregulated battery voltage (approximately 24Vdc) at up to 20-amps peak. The mating parts are Anderson PP45 Power Pole (tm) 1327 (red housing), 1327G6 (black housing) and 261G2-LPBK (contacts.) These components are readily available at \url{http://mouser.com}.
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=1.0\linewidth]{user-connector-diagram.pdf}
+  \caption{Warthog Power User Connector Pinout}
+  \label{userpowerpinout}
+\end{figure}
 
-The rails on the User Bay Power board are protected against short circuit by fuses. See the illustration for the fuse locations and purposes.
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=1.0\linewidth]{elec-chassis.pdf}
+  \caption{Warthog Chassis Electrical System}
+  \label{elec-chassis}
+\end{figure}
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=1.0\linewidth]{elec-left.pdf}
+  \caption{Warthog Left Drive Unit Electrical System}
+  \label{elec-left}
+\end{figure}
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=1.0\linewidth]{elec-right.pdf}
+  \caption{Warthog Right Drive Unit Electrical System}
+  \label{elec-right}
+\end{figure}
 
 \begin{warning}[Risk of Fire]
 For continued protection against risk of fire, always replace fuses only with those of the same type and rating.
 \end{warning}
 
 \begin{warning}[Unregulated Rail]
-The unregulated battery output may range from as low as 20Vdc up to 30Vdc or more depending on the state of charge of the battery pack and the electrical loading on the system. Ensure any accessories connected to that rail are able to deal with unregulated battery voltages.
+The unregulated battery output may range from as low as 40Vdc up to 60Vdc or more depending on the state of charge of the battery pack and the electrical loading on the system. Ensure any accessories connected to that rail are able to deal with unregulated battery voltages.
 \end{warning}
 
 
