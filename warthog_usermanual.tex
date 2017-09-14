@@ -160,7 +160,7 @@ Key specifications of Warthog are shown in \autoref{systemspecs}.
 
 \section{Getting Started}
 
-The first step is to read this manual and safety warnings.  The next step is to power up your Warthog and have some fun driving it around! 
+The first step is to read this manual and safety warnings.  The next step is to power up your Warthog and have some fun driving it around!
 
 Twist the red power button on the back of Warthog. Once the body lights are flashing red, twist the two stop buttons (if necessary), and press the blinking red stop reset button. In a moment, Warthog should go to solid red lights in back, and solid white in front.
 
@@ -416,11 +416,11 @@ When operating the Warthog  it is important to maintain a safe distance away fro
 \pagebreak[4]
 \subsection{Stop Buttons}
 
-The Stop system on the Warthog has three major components: The hardwired Stop switches, the Stop Reset button, and the wireless stop remote. 
+The Stop system on the Warthog has three major components: The hardwired Stop switches, the Stop Reset button, and the wireless stop remote.
 
 \subsubsection{Hardwired Stop}
 
-Pressing down one of the 4 red mushroom Stop buttons around the Warthog will disable power to the SEVCON devices (Key switch input on PIN 1). This disables the large contactors and also enables the brakes (passive, spring activated when not powered). The status indicator lights around the Warthog will flash red. 
+Pressing down one of the 4 red mushroom Stop buttons around the Warthog will disable power to the SEVCON devices (Key switch input on PIN 1). This disables the large contactors and also enables the brakes (passive, spring activated when not powered). The status indicator lights around the Warthog will flash red.
 
 To reset a Stop button, the top of the button should be twisted until the button pops out again. The status lights will then begin to scan red back and forth, with the lights on the rear right flashing yellow-red. This indicates that the Warthog is ready to be Stop reset. Pressing the red lit Stop Reset button (also indicated by the status panel flashing yellow-red) will fully enable the Warthog. The Warthog is fully enabled once a relay click is heard, and the front lights change to white.
 
@@ -434,9 +434,9 @@ Always ensure the Stop button is accessible at all times. Avoid mounting payload
 
 \subsection{Electrical System}
 
-The largest electrical safety consideration with the Warthog system is the VBat connection. As it is pulled straight from the batteries, it may have a voltage of 48V (depleted) - 62V (Charging) and can be used to power large external devices. This voltage can cause electrical shock if directly contacted, and is fused internally with an inline fuse at 20A. In general, take care to connect or disconnect devices preferably only when the entire system is powered off via the external switch on the rear (main power switch).
+The largest electrical safety consideration with the Warthog system is the VBat connection. As it is pulled straight from the batteries, it may have a voltage of 48V (depleted) - 62V (Charging) and can be used to power large external devices. This voltage can cause electrical shock if directly contacted, and is fused internally with an inline fuse at 10A. In general, take care to connect or disconnect devices preferably only when the entire system is powered off via the external switch on the rear (main power switch).
 
-Included with the Warthog are several "dummy" connectors, to allow you to keep unused connections securely blocked. Take note that triggering a Stop condition only disables voltage to the SEVCON drivers and motors, not the rest of the system which includes the connectors.  Please keep the "dummy" connectors attached unless an actual connector is attached.  Avoid working directly with the pins on the connector as it may short circuit.
+Take note that triggering a Stop condition only disables voltage to the SEVCON drivers and motors, not the rest of the system which includes the connectors. 
 
 The labeled status LEDS on the user panels indicate status of the system voltages. If an LED is not lit, most likely a system fuse has blown, and contacting Clearpath support is the best option.
 
@@ -466,6 +466,51 @@ Like most robotic systems, Warthog has an onboard PC coupled to a custom microco
   \caption{System Architecture}
   \label{systemarchitecture}
 \end{figure}
+
+Using ROS to interface with the Warthog, the ROS API decribed in \autoref{tab:rosapi} can be used.
+
+\bgroup
+\begin{table}[htp]
+\begin{tabular}{  l  l  p{7cm} }
+\hline
+Topic & Message Type & Purpose \\ \hline
+
+\lstinline!/cmd_vel! & \lstinline!geometry_msgs/Twist! &
+Input to Warthog's kinematic controller. Publish here to make Warthog go. \\ \hline
+\lstinline!/odometry/filtered! & \lstinline!nav_msgs/Odometry! &
+Published by \lstinline!robot_localization!, a filtered localization estimate based
+on wheel odometry (encoders) and  integrated IMU. \\ \hline
+
+\lstinline!/imu/data! & \lstinline!sensor_msgs/IMU! &
+Published by \lstinline!imu_filter_madgwick!, an orientation estimate based on Warthog's
+internal gyroscope, accelerometer, and magnetometer. \\ \hline
+
+\lstinline!/status! & \lstinline! warthog_msgs/Status! &
+Low-frequency status data for Warthog's systems. This information is republished in human
+readable form on the \lstinline!diagnostics! topic and is best consumed with the Robot
+Monitor. \\ \hline
+
+\lstinline!/cmd_lights! & \lstinline! warthog_msgs/Lights! &
+Input to controlling the Warthog's body lights when not in an error state. \\ \hline
+
+
+\lstinline!/SIDE/speed! & \lstinline! std_msgs/Float64! &
+Input velocity for each motor where \textit{SIDE} is either left or right.  This should not be published to directly, commands from \lstinline!/cmd_vel! will be converted to this.\\ \hline
+
+\lstinline!/SIDE/status/speed! & \lstinline! std_msgs/Float64! &
+Reported velocity from each motor's encoder where \textit{SIDE} is either left or right. \\ \hline
+
+\lstinline!/SIDE/status/fault! & \lstinline! std_msgs/Bool! &
+Reported state from each motor controller where \textit{SIDE} is either left or right. \\ \hline
+
+\lstinline!/SIDE/status/motor_temperature! & \lstinline! std_msgs/Int32! &
+Reported temperature from each motor controller where \textit{SIDE} is either left or right. \\ \hline
+
+\end{tabular}
+\caption{Warthog ROS API Topics}
+\label{tab:rosapi}
+\end{table}
+\egroup
 
 \pagebreak[4]
 \subsection{Mechanical Mounting}
