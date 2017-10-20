@@ -32,7 +32,7 @@
 \tableofcontents
 
 \section{Introduction}
-Clearpath Robotics Warthog is a rugged, all-terrain unmanned ground vehicle capable of traveling on land and in water.  Warthog fully supports the Robot Operating System (ROS) and can be equipped with a variety of payloads, including sensors and manipulators, to accomodate a wide range of robotics applications in mining, agriculture and environmental monitoring. This guide contains information about the setup, safe operation, and maintenance of your Warthog.  Please read the entire manual and safety warnings prior to operating the Warthog.
+Clearpath Robotics Warthog is a rugged, all-terrain unmanned ground vehicle capable of travelling on land and in water.  Warthog fully supports the Robot Operating System (ROS) and can be equipped with a variety of payloads, including sensors and manipulators, to accommodate a wide range of robotics applications in mining, agriculture and environmental monitoring. This guide contains information about the setup, safe operation, and maintenance of your Warthog.  Please read the entire manual and safety warnings prior to operating the Warthog.
 
 \subsection{What's Included}
 
@@ -166,7 +166,7 @@ Twist the red power button on the back of Warthog. Once the body lights are flas
 
 \subsection{Wireless Stop Remote}
 
-Inclued with the Warthog is a wireless stop remote, shown in Figure \autoref{wireless-stop} below, which is needed for operation.  If the wireless stop remote is out of range (~900m), it will cause the system to stop.
+Included with the Warthog is a wireless stop remote, shown in Figure \autoref{wireless-stop} below, which is needed for operation.  If the wireless stop remote is out of range (~900m), it will cause the system to stop.
 Likewise, if the wireless stop remote is inactive for 15 minutes, it will cause the system to stop.
 
 To turn on the remote, hold down the red 'POWER' button until the battery and signal strength flash.
@@ -312,7 +312,7 @@ Once your remote access to Warthog's ROS master is configured (as above), you ca
 roslaunch warthog_viz view_robot.launch
 \end{lstlisting}
 
-From within rviz, you can use interactive markers to drive Warthog, you can visulize its published localization estimate, and you can visualize any attached sensors which have been added to its robot description XML (URDF).
+From within rviz, you can use interactive markers to drive Warthog, you can visualize its published localization estimate, and you can visualize any attached sensors which have been added to its robot description XML (URDF).
 
 \pagebreak[4]
 
@@ -364,9 +364,9 @@ Warthog is a powerful, heavy, fast moving robotic platform. Please read the foll
 
 \subsection{General Warnings}
 
-For the safety of yourself and others, always conduct initial experiments and software development with the motors not engaged.  Whenever the robot is not being operated and the motors are engaged, keep it in a stop state.  Do not ride on the vehicle, it can accelerate and brake quickley.
+For the safety of yourself and others, always conduct initial experiments and software development with the motors not engaged.  Whenever the robot is not being operated and the motors are engaged, keep it in a stop state.  Do not ride on the vehicle, it can accelerate and brake quickly.
 
-When starting out, favor slower wheel speeds. Warthog's control loops can accurately maintain velocities as low as 0.1 m/s. Operating at such speeds will give you more time to react if things don’t go quite as you expect.
+When starting out, favour slower wheel speeds. Warthog's control loops can accurately maintain velocities as low as 0.1 m/s. Operating at such speeds will give you more time to react if things don’t go quite as you expect.
 
 \subsection{Maneuverability in Water}
 
@@ -415,7 +415,7 @@ The largest electrical safety consideration with the Warthog system is the VBat 
 
 Take note that triggering a Stop condition only disables voltage to the SEVCON drivers and motors, not the rest of the system which includes the connectors.
 
-The labeled status LEDS on the user panels indicate status of the system voltages. If an LED is not lit, most likely a system fuse has blown, and contacting Clearpath support is the best option.
+The labelled status LEDS on the user panels indicate status of the system voltages. If an LED is not lit, most likely a system fuse has blown, and contacting Clearpath support is the best option.
 
 To ensure saftey, please also observe the following precautions:
 
@@ -444,7 +444,7 @@ Like most robotic systems, Warthog has an onboard PC coupled to a custom microco
   \label{systemarchitecture}
 \end{figure}
 
-Using ROS to interface with the Warthog, the ROS API decribed in \autoref{tab:rosapi} can be used.
+Using ROS to interface with the Warthog, the ROS API described in \autoref{tab:rosapi} can be used and the node connections can be seen in \autoref{fig:rqt-graph}
 
 \bgroup
 \begin{table}[htp]
@@ -489,6 +489,14 @@ Reported temperature from each motor controller where \textit{SIDE} is either le
 \end{table}
 \egroup
 
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.75\linewidth]{rqt-graph.png}
+  \caption{Warthog Node and Topic connections}
+  \label{fig:rqt-graph}
+\end{figure}
+\clearpage
+
 \pagebreak[4]
 \subsection{Mechanical Mounting}
 \label{mechanical}
@@ -506,7 +514,7 @@ The payload integration area can be used to mount external payloads on top of th
 
 \item  The chassis has a removable access cover measuring ~46.25” x 26.25”. This access cover is supported underneath by two adjustable cross members. Regardless of payload, it is imperative that both cross members remain installed (approximately evenly spaced) to provided required support to the access cover. Consider that any payload installed above the top deck will prevent access to the chassis through the access cover, without first removing the installed payload.
 
-\item  The rotation of the suspension differential link in the horizontal plane will allow the payload to extend beyond the chassis top deck in both fore and aft locations. The amount of this payload extension (overhang) is dependent on several factors, including the weight and method of attachment of the payload as well as the terrain in which the UGV will operate. Ensure that the amount of overhanging payload allows the UGV to operate safely and doesn’t contact the terrain, especially when crossing steep and/or deep gullies.
+\item  The rotation of the suspension differential link in the horizontal plane will allow the payload to extend beyond the chassis top deck in both fore and aft locations. The amount of this payload extension (overhang) is dependent on several factors, including the weight and method of attachment of the payload as well as the terrain in which the UGV will operate. Ensure that the amount of overhanging payload allows the UGV to operate safely and does not contact the terrain, especially when crossing steep and/or deep gullies.
 
 \item  The available internal chassis volume is approximately 17.5” long x 26” wide x 9.5” high. This space is located at the center of the chassis between two battery packs. Consider that anything placed inside the chassis MUST be secured as to not move or shift during UGV operation. Any payload secured inside the chassis must also be insulated from coming into contact with the battery wiring and terminals.
 
@@ -524,7 +532,7 @@ Permanent damage resulting from custom modifications to the mounting plate is no
 \subsection{Electrical Integration}
 \label{electrical}
 
-The user power receptacles located in the User Panel are capable of supplying 5Vdc, 12Vdc, and unregulated battery voltage (approximately 48Vdc) for powering Warthog's payloads. See \autoref{userpower} for an labeled illustration and \autoref{userpowerpinout} the pin assignments. Ensure you select contact appropriate for the gauge of wire used.  The electrical system for the chassis can be seen in \autoref{elec-chassis}. Additionally, left and right drive units electrical system is decribed in \autoref{elec-left} and \autoref{elec-right} respectivelty.
+The user power receptacles located in the User Panel are capable of supplying 5Vdc, 12Vdc, and unregulated battery voltage (approximately 48Vdc) for powering Warthog's payloads. See \autoref{userpower} for an labelled illustration and \autoref{userpowerpinout} the pin assignments. Ensure you select contact appropriate for the gauge of wire used.  The electrical system for the chassis can be seen in \autoref{elec-chassis}. Additionally, left and right drive units electrical system is described in \autoref{elec-left} and \autoref{elec-right} respectively.
 
 
 
@@ -593,7 +601,7 @@ For the best experience, consider purchasing supported accessories from Clearpat
 
 \subsubsection{General}
 
-Warthog contains 48V lead-acid or lithium-ion battery packs. Each battery pack consists of four 12V leadacid or lithium-ion batteries.
+Warthog contains 48V lead-acid or lithium-ion battery packs. Each battery pack consists of four 12V lead-acid or lithium-ion batteries.
 
 Battery configuration may vary with each unit. In order to maximize performance it is important to ensure that the battery level across each set of lead-acid or lithium-ion batteries is within 0.1-0.2V of each other. If the battery packs exceed this tolerance, it is advised to charge them to within tolerance before wiring these packs
 in parallel. The overall battery life will vary depending upon the usage of the unit.
@@ -603,7 +611,7 @@ Always exercise caution and observe the following safety practices connecting, d
 \begin{itemize}[nolistsep]
   \item Batteries are high voltage, high current
   \item Battery packs must be properly fastened down to ensure they do not move when the Warthog is in operation.
-  \item Ensure that the battery packs are evenly distrubted throughout the Warthog to maximze stability.
+  \item Ensure that the battery packs are evenly distributed throughout the Warthog to maximize stability.
   \item Battery levels on the unit should be checked on a regular basis.  It is important to maintain the battery voltage at a suitable level for proper operation.
   \item When additional battery packs are added to the system it is important to connect the positive terminal first to the main power of the Warthog before connecting ground.
   \item When installing additional battery packs, disconnect the ground on all battery packs presently in the unit before connecting the positive terminal of the new battery packs.
@@ -615,7 +623,7 @@ When storing Warthog for long periods of time, its important to properly maintai
 
 \begin{itemize}[nolistsep]
   \item Fully charge Warthog, turn it off and put it into storage.  Once a week, connect power to the charger and allow the charger to top up the battery for an hour or so.
-  \item Fully charge Warthog, turn it off and put it into storage, but leave the charger connected and powered the enitre time Warthog is in storage.  The charger will monitor the battery and will automatically charge it up as needed.
+  \item Fully charge Warthog, turn it off and put it into storage, but leave the charger connected and powered the entire time Warthog is in storage.  The charger will monitor the battery and will automatically charge it up as needed.
 \end{itemize}
 
 
