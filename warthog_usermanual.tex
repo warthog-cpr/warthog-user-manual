@@ -236,8 +236,6 @@ See \url{http://wiki.ros.org/warthog_base} for information on commanding the bod
 
   Red flashing & Stop circuit is broken. Twist the mushroom buttons to ensure that they are unlatched, and check any external stop hardware, if present. \\ \hline
 
-  Alternating Red flashing and \\ Yellow corner flashing & All stops are closed but not reset, the stop loop is now only electrically latched. Press the stop reset button to enable full operation. \\ \hline
-
   Flashing yellow & Motor drivers not yet ready to drive. The motors have a brief initialization sequence which must complete after a stop condition clears before they are ready to drive. If this condition persists, please contact our support team. \\ \hline
 
   Headlights/taillights & When Warthog is ready to drive, the front will change from red to white. The intensity of the head and tail lights will increase slightly when actually in motion. This is the status which may be overridden by publishing your own light patterns to the cmd\_lights ROS topic. \\ \hline
@@ -436,7 +434,7 @@ Always ensure the Stop button is accessible at all times. Avoid mounting payload
 
 The largest electrical safety consideration with the Warthog system is the VBat connection. As it is pulled straight from the batteries, it may have a voltage of 48V (depleted) - 62V (Charging) and can be used to power large external devices. This voltage can cause electrical shock if directly contacted, and is fused internally with an inline fuse at 10A. In general, take care to connect or disconnect devices preferably only when the entire system is powered off via the external switch on the rear (main power switch).
 
-Take note that triggering a Stop condition only disables voltage to the SEVCON drivers and motors, not the rest of the system which includes the connectors. 
+Take note that triggering a Stop condition only disables voltage to the SEVCON drivers and motors, not the rest of the system which includes the connectors.
 
 The labeled status LEDS on the user panels indicate status of the system voltages. If an LED is not lit, most likely a system fuse has blown, and contacting Clearpath support is the best option.
 
