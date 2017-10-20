@@ -220,8 +220,7 @@ If you’re not seeing any action, check Contact on \autoref{contact} to get in 
 
 
 \pagebreak[4]
-%commenting out body lights section until updated
-\iffalse
+
 \subsection{Body Lights}
 
 Warthog includes eight RGB body lights, stacked in a pair on each corner of the chassis. These lights express system status according to \autoref{bodylights}, but in the absence of one of the low-level conditions, they can be commanded from ROS to display indications from autonomy or other higher-level software.
@@ -252,7 +251,7 @@ See \url{http://wiki.ros.org/warthog_base} for information on commanding the bod
 \egroup
 
 \pagebreak[4]
-\fi
+
 \subsection{Wireless Connectivity}
 
 To connect wirelessly to Warthog, first connect your laptop to one of the the network ports with a standard ethernet cable. Now, set your laptop’s ethernet port to a static IP such as \lstinline{192.168.131.51}, and connect via SSH to \lstinline{administrator@192.168.131.1}. The default password is \lstinline{clearpath}.
@@ -552,7 +551,7 @@ Permanent damage resulting from custom modifications to the mounting plate is no
 
 The user power receptacles located in the User Panel are capable of supplying 5Vdc, 12Vdc, and unregulated battery voltage (approximately 48Vdc) for powering Warthog's payloads. See \autoref{userpower} for an labeled illustration and \autoref{userpowerpinout} the pin assignments. Ensure you select contact appropriate for the gauge of wire used. 
 
-%The electrical system for the chassis can be seen in \autoref{elec-chassis}. Additionally, left and right drive units electrical system is decribed in \autoref{elec-left} and \autoref{elec-right} respectivelty.
+The electrical system for the chassis can be seen in \autoref{elec-chassis}. Additionally, left and right drive units electrical system is decribed in \autoref{elec-left} and \autoref{elec-right} respectivelty.
 
 
 
@@ -578,7 +577,6 @@ For continued protection against risk of fire, always replace fuses only with th
 \end{figure}
 
 \pagebreak
-\iffalse
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=0.9\linewidth]{elec-chassis.pdf}
@@ -600,7 +598,6 @@ For continued protection against risk of fire, always replace fuses only with th
   \label{elec-right}
 \end{figure}
 
-\fi
 
 
 
