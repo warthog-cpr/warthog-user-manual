@@ -60,7 +60,7 @@ Please see \autoref{Warthog_overview} for a view of some of Warthog's key extern
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=1\linewidth]{Warthog_Drawing_Labeled.pdf}
+  \includegraphics[width=1\linewidth]{Warthog_Drawing_Labeled.PNG}
   \caption{Warthog Hardware Overview}
   \label{Warthog_overview}
 \end{figure}
@@ -142,7 +142,7 @@ Key specifications of Warthog are shown in \autoref{systemspecs}.
   Capacity &  105 Ah at 48 V, expandable to 200 Ah with Li-ion option \\ \hline
   Nominal Run Time & Lead acid: 2.5 hrs, Li-ion: 6 hrs \\ \hline
   Charge Time &  4 Hours approx \\ \hline
-  User Power & 5 V, 12 V Fused (24 V, 48 V optional) \\ \hline
+  User Power & 12 V, 24 V and 48 V Fused at 10A \\ \hline
   Control Modes & Remote control, computer controlled velocity commands, indoor/outdoor autonomy packages \\ \hline
   Feedback & Battery voltage, motor currents, wheel odometry, control system status, temperature, safety status \\ \hline
   Communication &  Ethernet, USB, Remote Control, Wi-Fi \\ \hline
@@ -218,6 +218,7 @@ If you’re not seeing any action, check Contact on \autoref{contact} to get in 
 
 
 \pagebreak[4]
+
 \subsection{Body Lights}
 
 Warthog includes eight RGB body lights, stacked in a pair on each corner of the chassis. These lights express system status according to \autoref{bodylights}, but in the absence of one of the low-level conditions, they can be commanded from ROS to display indications from autonomy or other higher-level software.
@@ -246,6 +247,8 @@ See \url{http://wiki.ros.org/warthog_base} for information on commanding the bod
 \egroup
 
 \pagebreak[4]
+
+
 \subsection{Wireless Access}
 
 To get Warthog connected to your local wifi, you must first access the internal computer using a wired connection. Connect to one of the the network ports with a standard ethernet cable. Now, set your laptop’s ethernet port to a static IP such as \lstinline{192.168.131.51}, and connect via SSH to \lstinline{administrator@192.168.131.1}. The default password is \lstinline{clearpath}.
@@ -531,14 +534,17 @@ Permanent damage resulting from custom modifications to the mounting plate is no
 \subsection{Electrical Integration}
 \label{electrical}
 
-The user power receptacles located in the User Panel are capable of supplying 5Vdc, 12Vdc, and unregulated battery voltage (approximately 48Vdc) for powering Warthog's payloads. See \autoref{userpower} for an labelled illustration and \autoref{userpowerpinout} the pin assignments. Ensure you select contact appropriate for the gauge of wire used.  The electrical system for the chassis can be seen in \autoref{elec-chassis}. Additionally, left and right drive units electrical system is described in \autoref{elec-left} and \autoref{elec-right} respectively.
+The user power receptacles located in the User Panel are capable of supplying 5Vdc, 12Vdc, and unregulated battery voltage (approximately 48Vdc) for powering Warthog's payloads. See \autoref{userpower} for an labeled illustration and \autoref{userpowerpinout} the pin assignments. Ensure you select contact appropriate for the gauge of wire used. 
+
+The electrical system for the chassis can be seen in \autoref{elec-chassis}. Additionally, left and right drive units electrical system is decribed in \autoref{elec-left} and \autoref{elec-right} respectivelty.
+
 
 
 
 
 \begin{figure}[!h]
   \centering
-  \includegraphics[width=1.0\linewidth]{User_Panel_Labeled.pdf}
+  \includegraphics[width=1.0\linewidth]{User_Panel_Labeled.PNG}
   \caption{Warthog User Panel}
   \label{userpower}
 \end{figure}
@@ -548,19 +554,15 @@ The user power receptacles located in the User Panel are capable of supplying 5V
 For continued protection against risk of fire, always replace fuses only with those of the same type and rating.
 \end{warning}
 
-\begin{warning}[Unregulated Rail]
-The unregulated battery output may range from as low as 40Vdc up to 60Vdc or more depending on the state of charge of the battery pack and the electrical loading on the system. Ensure any accessories connected to that rail are able to deal with unregulated battery voltages.
-\end{warning}
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=1.0\linewidth]{user-connector-diagram.pdf}
+  \includegraphics[width=1.0\linewidth]{Breakout_pinouts.PNG}
   \caption{Warthog Power User Connector Pinout}
   \label{userpowerpinout}
 \end{figure}
 
 \pagebreak
-
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=0.9\linewidth]{elec-chassis.pdf}
@@ -575,14 +577,13 @@ The unregulated battery output may range from as low as 40Vdc up to 60Vdc or mor
   \label{elec-left}
 \end{figure}
 
-
-
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=0.9\linewidth]{elec-right.pdf}
   \caption{Warthog Right Drive Unit Electrical System}
   \label{elec-right}
 \end{figure}
+
 
 
 
