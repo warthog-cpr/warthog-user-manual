@@ -193,8 +193,8 @@ To begin, slide the power switch to the ON position which is labelled in Figure 
 Caution: The speed adjustment knob should be turned initially all the way to the left while familiarizing yourself with the transmitter and slowly increasing it to get it moving.
 \end{warning}
 
-The position of the speed adjustment scale is shown in  \autoref{futaba-screen} as 'CH4'.
-The transmitter needs to be enabled which is done using the Enable/Disable switch that is a three position switch where only the down position enables it.
+The position of the speed adjustment scale is shown in \autoref{futaba-screen} as 'CH4'.
+The transmitter needs to be enabled which is done using the Deadman switch.  The deadman switch is a two position spring loaded switch.  To enable the RC tele-operation, the switch needs to be held down.  If released, the switch returns to the up position to disable the robot.
 
 The left joy stick is used for the forward and reverse motion of the robot and the right joystick is used for turning.
 
@@ -221,7 +221,7 @@ If you’re not seeing any action, check Contact on \autoref{contact} to get in 
 
 \subsection{Body Lights}
 
-Warthog includes eight RGB body lights, stacked in a pair on each corner of the chassis. These lights express system status according to \autoref{bodylights}, but in the absence of one of the low-level conditions, they can be commanded from ROS to display indications from autonomy or other higher-level software.
+Warthog includes four RGB body lights, stacked in a pair on each corner of the chassis. These lights express system status according to \autoref{bodylights}, but in the absence of one of the low-level conditions, they can be commanded from ROS to display indications from autonomy or other higher-level software.
 
 See \url{http://wiki.ros.org/warthog_base} for information on commanding the body lights.
 
@@ -534,7 +534,7 @@ Permanent damage resulting from custom modifications to the mounting plate is no
 \subsection{Electrical Integration}
 \label{electrical}
 
-The user power receptacles located in the User Panel are capable of supplying 5Vdc, 12Vdc, and unregulated battery voltage (approximately 48Vdc) for powering Warthog's payloads. See \autoref{userpower} for an labeled illustration and \autoref{userpowerpinout} the pin assignments. Ensure you select contact appropriate for the gauge of wire used. 
+The user power receptacles located in the User Panel are capable of supplying 5Vdc, 12Vdc, and unregulated battery voltage (approximately 48Vdc) for powering Warthog's payloads. See \autoref{userpower} for an labeled illustration and \autoref{userpowerpinout} the pin assignments. Ensure you select contact appropriate for the gauge of wire used.
 
 The electrical system for the chassis can be seen in \autoref{elec-chassis}. Additionally, left and right drive units electrical system is decribed in \autoref{elec-left} and \autoref{elec-right} respectivelty.
 
