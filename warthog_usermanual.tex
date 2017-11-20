@@ -629,6 +629,14 @@ When storing Warthog for long periods of time, its important to properly maintai
 
 Please contact Clearpath Robotics for additional information about Warthog's battery pack.
 
+\subsection{Tread Upgrade}
+If your unit came equipped with the tread upgrade, please keep the following considerations in mind
+
+\begin{itemize}
+\item The tread drive units pull considerably more current to operate. It is advised to operate a tread Warthog at reduced speeds, either through ROS commands or by reducing the speed scale when operating with the Futaba controller.
+\item Due to the increased drive current, expect lower battery life than a wheeled Warthog. It is recommend to drive at reduced speeds to increase battery life.
+\item It is possible to trigger an over current error in the motor controller by increasing speed drastically shortly after resetting a stop condition. The system's body lights will seem as if the unit is ready to drive, however it will not respond to drive commands. To clear this state, simply cycle another stop condition, and ramp up speeds slower.
+\end{itemize}
 
 \section{Contact}
 \label{contact}
