@@ -166,7 +166,8 @@ Twist the red power button on the back of Warthog. Once the body lights are flas
 
 \subsection{Wireless Stop Remote}
 
-Included with the Warthog is a wireless stop remote. A picture of it is shown in Figure \autoref{wireless-stop} below, and it's capable of engaging a safety stop remotely.  The system is designed to enter a stopped state when the remote is not communicating or loses communication with the base. The wireless e-stop remote operates as follows: 
+Included with the Warthog is a wireless stop remote. A picture of it is shown in  
+\autoref{wireless-stop} below, and it's capable of engaging a safety stop remotely.  The system is designed to enter a stopped state when the remote is not communicating or loses communication with the base. The wireless e-stop remote operates as follows: 
 
 \begin{enumerate}
   \item Pull the red stop button outwards to disengage it from an e-stop condition.
@@ -185,12 +186,15 @@ The battery LED should now be blinking slower, this indicates the remote stop ha
 \end{figure}
 
 
-If you’re not seeing any change in behaviour, please contact our support team.
+NOTE: If you’re not seeing any change in behaviour, please contact our support team.
+
+\pagebreak[4]
 
 \subsection{Futaba Controller}
 
 The long range remote control (RC) Futaba radio transmitter can be used to tele-operate the Warthog.
-To begin, slide the power switch to the ON position which is labelled in Figure \autoref{fubata}.
+To begin, slide the power switch to the ON position which is labelled in  
+\autoref{futaba} below.
 
 \begin{warning}[]
 Caution: The speed adjustment knob should be turned initially all the way to the left while familiarizing yourself with the transmitter and slowly increasing it to get it moving.
@@ -201,11 +205,9 @@ The transmitter needs to be enabled which is done using the Deadman switch.  The
 
 The left joy stick is used for the forward and reverse motion of the robot and the right joystick is used for turning.
 
-
-
 \begin{figure}[!h]
   \centering
-  \includegraphics[width=1.0\linewidth]{futaba.pdf}
+  \includegraphics[width=1.0\linewidth]{futaba.png}
   \caption{Futaba Radio Transmitter}
   \label{futaba}
 \end{figure}
@@ -285,7 +287,6 @@ ssh administrator@<IP_OF_Warthog>
 
 SSH sessions allow you to control Warthog's internal computer.  You can do various things such as download packages, run updates, add/remove files, transfer files etc. 
 
-\pagebreak[4]
 \subsection{Remote ROS Connectivity}
 
 Now that Warthog is on the wireless network, you can access it via SSH or as a remote ROS master. Note that in the default configuration, the background ROS process running on Warthog launches with the \lstinline{robot_upstart} package. This is configured to set the \lstinline{ROS_HOSTNAME} environment variable to the Warthog PC's hostname.
