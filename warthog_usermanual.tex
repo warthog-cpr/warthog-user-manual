@@ -60,7 +60,7 @@ Please see \autoref{Warthog_overview} for a view of some of Warthog's key extern
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=1\linewidth]{Warthog_Drawing_Labeled.PNG}
+  \includegraphics[width=1\linewidth]{graphics/Warthog_Drawing_Labeled.png}
   \caption{Warthog Hardware Overview}
   \label{Warthog_overview}
 \end{figure}
@@ -166,21 +166,21 @@ Twist the red power button on the back of Warthog. Once the body lights are flas
 
 \subsection{Wireless Stop Remote}
 
-Included with the Warthog is a wireless stop remote. A picture of it is shown in  
-\autoref{wireless-stop} below, and it's capable of engaging a safety stop remotely.  The system is designed to enter a stopped state when the remote is not communicating or loses communication with the base. The wireless e-stop remote operates as follows: 
+Included with the Warthog is a wireless stop remote. A picture of it is shown in
+\autoref{wireless-stop} below, and it's capable of engaging a safety stop remotely.  The system is designed to enter a stopped state when the remote is not communicating or loses communication with the base. The wireless e-stop remote operates as follows:
 
 \begin{enumerate}
   \item Pull the red stop button outwards to disengage it from an e-stop condition.
-  \item Press and hold the green start button on the right side of the unit until the battery LED indicator above the buttons turns green. If the battery light is red, this means the e-stop button is still engaged. 
-  \item Press the button labeled “RELEASE” within three seconds followed by the start button again. 
-  \item The battery LED should be blinking green quickly, this indicates the remote is paired with the receiver. To disengage the stop, press start once again. 
+  \item Press and hold the green start button on the right side of the unit until the battery LED indicator above the buttons turns green. If the battery light is red, this means the e-stop button is still engaged.
+  \item Press the button labeled “RELEASE” within three seconds followed by the start button again.
+  \item The battery LED should be blinking green quickly, this indicates the remote is paired with the receiver. To disengage the stop, press start once again.
 \end{enumerate}
 
 The battery LED should now be blinking slower, this indicates the remote stop has been disengaged. The corner status lights of the Warthog will change from blinking red to solid red at the rear and white at the front assuming all other safety stop sources have been disengaged. The Warthog is now ready to drive.
 
 \begin{figure}[!h]
   \centering
-  \includegraphics[width=1.0\linewidth]{wireless-stop-remote.png}
+  \includegraphics[width=1.0\linewidth]{graphics/wireless-stop-remote.png}
   \caption{Warthog's Wireless Stop Remote}
   \label{wireless-stop}
 \end{figure}
@@ -193,7 +193,7 @@ NOTE: If you’re not seeing any change in behaviour, please contact our support
 \subsection{Futaba Controller}
 
 The long range remote control (RC) Futaba radio transmitter can be used to tele-operate the Warthog.
-To begin, slide the power switch to the ON position which is labelled in  
+To begin, slide the power switch to the ON position which is labelled in
 \autoref{futaba} below.
 
 \begin{warning}[]
@@ -207,7 +207,7 @@ The left joy stick is used for the forward and reverse motion of the robot and t
 
 \begin{figure}[!h]
   \centering
-  \includegraphics[width=1.0\linewidth]{futaba.png}
+  \includegraphics[width=1.0\linewidth]{graphics/futaba.png}
   \caption{Futaba Radio Transmitter}
   \label{futaba}
 \end{figure}
@@ -257,7 +257,7 @@ Warthog includes four RGB body lights, stacked in a pair on each corner of the c
 
 To get Warthog connected to your local wifi, you must first access the internal computer using a wired connection. Connect to one of the the network ports with a standard ethernet cable. Now, set your laptop’s ethernet port to a static IP such as \lstinline{192.168.131.51}, and connect via SSH to \lstinline{administrator@192.168.131.1}. The default password is \lstinline{clearpath}.
 
-Now that you're connected via SSH over a wired connection, you can setup Warthog to connect to a local wifi network.  To do this, you will use the wireless interface configuration daemon (WICD) - a preinstalled network manager.  
+Now that you're connected via SSH over a wired connection, you can setup Warthog to connect to a local wifi network.  To do this, you will use the wireless interface configuration daemon (WICD) - a preinstalled network manager.
 
 In a terminal window, execute the following command:
 
@@ -265,11 +265,11 @@ In a terminal window, execute the following command:
 wicd-curses
 \end{lstlisting}
 
-You should see a browsable list of networks which the robot has detected. Use arrow keys to select the one you would like to connect to, and then press the right arrow to configure it. You can enter your network’s password near the bottom of the page, and note that you must select the correct encryption scheme; most modern networks use WPA1/2 Passphrase, so if that’s you, make sure that option is selected. You also likely want to select the option to automatically reconnect to this network, so that Warthog will be there for you on your wireless automatically in the future.  
+You should see a browsable list of networks which the robot has detected. Use arrow keys to select the one you would like to connect to, and then press the right arrow to configure it. You can enter your network’s password near the bottom of the page, and note that you must select the correct encryption scheme; most modern networks use WPA1/2 Passphrase, so if that’s you, make sure that option is selected. You also likely want to select the option to automatically reconnect to this network, so that Warthog will be there for you on your wireless automatically in the future.
 
-When you’re finished, press \textbf{F10} to save, and then \textbf{C} to connect.  Warthog is now connected to wifi!  
+When you’re finished, press \textbf{F10} to save, and then \textbf{C} to connect.  Warthog is now connected to wifi!
 
-While you're still wired to Warthog, you'll need to identify the IP address of Warthog's wireless connection.  
+While you're still wired to Warthog, you'll need to identify the IP address of Warthog's wireless connection.
 
 In a terminal window, execute:
 
@@ -285,7 +285,7 @@ Remove the ethernet cord from the Warthog.   Now you can SSH into Warthog over t
 ssh administrator@<IP_OF_Warthog>
 \end{lstlisting}
 
-SSH sessions allow you to control Warthog's internal computer.  You can do various things such as download packages, run updates, add/remove files, transfer files etc. 
+SSH sessions allow you to control Warthog's internal computer.  You can do various things such as download packages, run updates, add/remove files, transfer files etc.
 
 \subsection{Remote ROS Connectivity}
 
@@ -345,7 +345,7 @@ rosrun rqt_robot_monitor rqt_robot_monitor
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.75\linewidth]{rqt_robot_monitor.png}
+  \includegraphics[width=0.70\linewidth]{graphics/rqt_robot_monitor.png}
   \caption{Robot Monitor}
   \label{robotmonitor}
 \end{figure}
@@ -357,7 +357,7 @@ The Warthog has the ability to be put into neutral which is controlled be the fo
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.25\linewidth]{drivetrain.png}
+  \includegraphics[width=0.25\linewidth]{graphics/drivetrain.png}
   \caption{Drivetrain lever}
   \label{lever}
 \end{figure}
@@ -365,7 +365,7 @@ The Warthog has the ability to be put into neutral which is controlled be the fo
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.75\linewidth]{drivetrain-neutral.png}
+  \includegraphics[width=0.75\linewidth]{graphics/drivetrain-neutral.png}
   \caption{Drivetrain in Neutral}
   \label{drivetrain-n}
 \end{figure}
@@ -373,7 +373,7 @@ The Warthog has the ability to be put into neutral which is controlled be the fo
 
 \begin{figure}[!t]
   \centering
-  \includegraphics[width=0.75\linewidth]{drivetrain-gear.png}
+  \includegraphics[width=0.75\linewidth]{graphics/drivetrain-gear.png}
   \caption{Drivetrain in Gear}
   \label{drivetrain-g}
 \end{figure}
@@ -409,7 +409,7 @@ When operating the Warthog  it is important to maintain a safe distance away fro
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.75\linewidth]{Warthog_pinch_points.jpg}
+  \includegraphics[width=0.75\linewidth]{graphics/Warthog_pinch_points.jpg}
   \caption{Warthog Pinch Points}
   \label{pinchpoints}
 \end{figure}
@@ -513,7 +513,7 @@ Reported temperature from each motor controller where \textit{SIDE} is either le
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.75\linewidth]{rqt-graph.png}
+  \includegraphics[width=0.75\linewidth]{graphics/rqt-graph.png}
   \caption{Warthog Node and Topic connections}
   \label{fig:rqt-graph}
 \end{figure}
@@ -564,7 +564,7 @@ The electrical system for the chassis can be seen in \autoref{elec-chassis}. Add
 
 \begin{figure}[!h]
   \centering
-  \includegraphics[width=1.0\linewidth]{User_Panel_Labeled.PNG}
+  \includegraphics[width=1.0\linewidth]{graphics/User_Panel_Labeled.png}
   \caption{Warthog User Panel}
   \label{userpower}
 \end{figure}
@@ -577,7 +577,7 @@ For continued protection against risk of fire, always replace fuses only with th
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=1.0\linewidth]{Breakout_pinouts.PNG}
+  \includegraphics[width=1.0\linewidth]{graphics/Breakout_pinouts.png}
   \caption{Warthog Power User Connector Pinout}
   \label{userpowerpinout}
 \end{figure}
