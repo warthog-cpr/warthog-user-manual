@@ -18,7 +18,7 @@
 \usepackage{fancyhdr}
 \usepackage{pdfpages}
 \pagestyle{fancyplain}
-\lfoot{Rev. 1.0.0}
+\lfoot{Rev. 2.0.0}
 \rfoot{Warthog UGV}
 \lhead{}
 \chead{}
@@ -30,6 +30,9 @@
 
 \manualcover{cover-page.pdf}
 \tableofcontents
+
+
+
 
 \section{Introduction}
 Clearpath Robotics Warthog is a rugged, all-terrain unmanned ground vehicle capable of travelling on land and in water.  Warthog fully supports Robot Operating System (ROS), and can be equipped with a variety of payloads. Payloads such as sensors and manipulators to accommodate a wide range of robotics applications in mining, agriculture, and environmental monitoring. This guide contains information about the setup, safe operation, and maintenance of your Warthog.  Please read the entire manual and safety warnings prior to operating the Warthog.
@@ -43,7 +46,7 @@ Included with each Warthog are the following:
   \begin{itemize}
     \item{Onboard computer}
     \item{User Panel with power, Ethernet, Serial(RS232) and USB connectivity}
-    \item{48V Lead Acid Battery Pack}
+    \item{48V Lead Acid/Lithium Battery Pack}
     \item{Battery Charger}
   \end{itemize}
   \item 1x Futaba Remote Control (R/C)
@@ -71,20 +74,22 @@ Please see \autoref{Warthog_overview} for a view of some of Warthog's key extern
 
 \pagebreak[4]
 \subsubsection{Battery Charger}
-Please see Appendix for information about the provided charger.
+Please see Appendix 1 for information about the provided charger.
 
 \subsubsection{Bilge Pumps}\label{bilgepumps}
 The Warthog has two bilge pumps, with one situated in each of the drive units underneath the motor.
 
-The bilge pumps are used to remove water from the main chassis and drive units during operation in water. At initial startup, an audible sound can be heard from the bilge pumps being initiated. These pumps are an automatic pumping system that check for water levels inside the drive units. The pumps automatically come on every two minutes and check for water levels. If the water level inside the drive unit exceeds a predetermined level, the pumps will remain on, otherwise they will shut off. During prolonged use in water, some water may appear in the drive unit. This is normal and acceptable.
+The bilge pumps are used to remove water from the main chassis and drive units during operation in water. If the water level inside the drive unit exceeds a predetermined level, the pumps will remain on, otherwise they will shut off. During prolonged use in water, some water may appear in the drive unit. This is normal and acceptable.
+
+The Warthog comes equipped with a bilge pump in each of the side drive units. These pumps are used to remove any water coming into the main chassis or drive units during operation in water. If water exceeds a certain level, the pumps will activate automatically and run until the water has receded to a safe level. During prolonged use in water, it is normal and acceptable to see water appear in the drive units. 
 
 %% Picture of bilge pumps
 
-This outlet leads from the pump to the exterior of the Warthog. It is used to remove excess water from the chassis and drive units. No obstructions should be placed in front of or around this area. Obstruction of water flow may result in damage to the internal electrical components and loss of function in the Warthog.
+Each drive unit has a bilge pump outlet on the side of the drive unit. No obstructions should be placed in front of or around this area. Obstruction of water flow may result in damage to the internal electrical components and loss of function in the Warthog.
 
 \subsubsection{User Panel}\label{userarea}
 
-The User Panel provides access to the user power panel, as well as USB, serial, and ethernet ports.  The power panel can be used to power your payloads. The USB 3.0 and ethernet  ports are connected directly to the onboard PC. To connect a device to the onboard network, it's suggested to give it a static IP in the \lstinline{192.168.131.x} subnet, avoiding IPs in use by the following pre-existing devices:
+The top plate provides access to user power, as well as USB, serial, and ethernet ports. These connections can be used to power and communicate with your payloads. The USB 3.0 and ethernet  ports are connected directly to the onboard PC. To connect a device to the onboard network, it's suggested to give it a static IP in the \lstinline{192.168.131.x} subnet, avoiding IPs in use by the following pre-existing devices:
 
 \bgroup
 \def\arraystretch{1.2}%
@@ -96,9 +101,9 @@ The User Panel provides access to the user power panel, as well as USB, serial, 
 
   192.168.131.2 & Ethernet-connected MCU. \\ \hline
 
-  192.168.131.14 & Front-facing LIDAR (optional). \\ \hline
+  192.168.131.20 & Primary LIDAR (optional). \\ \hline
 
-  192.168.131.13 & Rear-facing LIDAR (optional). \\ \hline
+  192.168.131.21 & Secondary LIDAR (optional). \\ \hline
 
   \end{tabular}
 \newline
@@ -108,6 +113,8 @@ The User Panel provides access to the user power panel, as well as USB, serial, 
 \egroup
 
 For more information on electrical integration, please see \autoref{electrical} on page \pageref{electrical}.
+
+\pagebreak[4]
 
 
 \subsubsection{Payload Integration Area}
@@ -132,21 +139,21 @@ Key specifications of Warthog are shown in \autoref{systemspecs}.
   Base Weight & 280 kg (551 lbs) \\ \hline
   Ground Clearance & 254 mm (10 in) \\ \hline
   Max Payload  &  272 kg (600 lbs)   \\ \hline
-  Max Incline & 35-45° \\ \hline
+  Max Incline & 35-45° (dependent on payload) \\ \hline
   Max Speed  &  18 km/h (11 mph) \\ \hline
   Suspension & Geometric Passive Articulation \\ \hline
   Drive Configuration &  4x4 Skid Steer \\ \hline
   Operating Environment  &  Outdoor \\ \hline
   Traction & 24" Argo tire (24" Turf tire or 12" wide Quad Track System optional) \\ \hline
-  Battery Chemistry & AGM sealed lead acid (Li-ion optional) \\ \hline
-  Capacity &  105 Ah at 48 V, expandable to 200 Ah with Li-ion option \\ \hline
+  Battery Chemistry & AGM sealed lead acid or Li-ion \\ \hline
+  Capacity &  105 Ah at 48 V \\ \hline
   Nominal Run Time & Lead acid: 2.5 hrs, Li-ion: 6 hrs \\ \hline
-  Charge Time &  4 Hours approx \\ \hline
+  Charge Time &  6 to 8 Hours \\ \hline
   User Power & 12 V, 24 V and 48 V Fused at 10A \\ \hline
   Control Modes & Remote control, computer controlled velocity commands, indoor/outdoor autonomy packages \\ \hline
   Feedback & Battery voltage, motor currents, wheel odometry, control system status, temperature, safety status \\ \hline
   Communication &  Ethernet, USB, Remote Control, Wi-Fi \\ \hline
-  Drivers and APIs  &  Packaged with ROS Kinetic (includes RViz, Gazebo support), Matlab API available \\ \hline
+  Drivers and APIs  &  Packaged with ROS Melodic (includes RViz, Gazebo support), Matlab API available \\ \hline
 
   \end{tabular}
 \newline
@@ -156,18 +163,166 @@ Key specifications of Warthog are shown in \autoref{systemspecs}.
 \egroup
 
 
+\section{Safety Considerations}
+
+Warthog is a powerful, heavy, fast moving robotic platform. Please read the following safety information carefully.
+
+\subsection{General Warnings}
+
+For the safety of yourself and others, always conduct initial experiments and software development with the motors not engaged.  Whenever the robot is not being operated and the motors are engaged, keep it in a stop state.  Do not ride on the vehicle, it can accelerate and brake quickly.
+
+When starting out, favour slower wheel speeds. Warthog's control loops can accurately maintain velocities as low as 0.1 m/s. Operating at such speeds will give you more time to react if things don’t go quite as you expect.
+
+When enabling the system using the Start button on the wireless remote, be sure to stand well back from the Warthog. User code running on the Warthog may still be trying to command the motors, and this can result in sudden and unexpected movement of the vehicle. Be prepared to stop the system again using the wireless remote.
+
+\subsection{Safety Features}
+The following risk reduction measures have been incorporated into the base Warthog UGV:
+
+\begin{itemize}[nolistsep]
+  \item Circuit protection in the form of fuses, as shown in system electrical schematics
+  \item Mechanical enclosure of components that present electrical, thermal or mechanical hazards
+  \item Use of suitable components for critical functions
+  \item Mechanical brakes mounted to each traction motor shaft to reduce likelihood of unintended vehicle motion
+  \item Motor temperature feedback and monitoring to prevent faults due to motor over-temperature
+  \item Closed-loop motor control with encoder feedback to reduce likelihood of unintended vehicle motion
+  \item Bilge pumps to prevent electrical faults due to water ingress
+  \item Use of finger-safe electrical connectors where live electrical components are externally accessible to users
+  \item Main battery disconnect to reduce likelihood of harm during assembly, transportation and maintenance
+  \item Brightly-coloured, contrasting surface coatings and lighting to increase visibility and avoidability
+  \item Computer-to-microcontroller watchdog timer with stop function to prevent hazards due to computer failures
+  \item Emergency stop actuators mounted on the vehicle to bring it to a safe state
+  \item Remote (wireless) emergency stop pendant to bring the vehicle to a safe state
+  \item Remote emergency stop system to bring vehicle to a safe state if connection to pendant is lost
+  \item Remote controls allow operator to physically separate themselves from vehicle
+  \item Mechanical transmissions include disconnection levers that allow motors to be physically disconnected from wheels to prevent unintended vehicle motion
+\end{itemize}
+
+\subsection{Risk}
+The following residual risks exist and must be recognized and accepted by integrators and users:
+
+\begin{itemize}[nolistsep]
+  \item It is possible for a single fault condition to result in loss of safety functions including stop function
+  \item It is possible that the loss of safety functions will go undetected by the vehicle control system
+  \item The vehicle is incapable of detecting obstacles in its environment and will not intervene to avoid collisions with persons or animals in its path
+  \item When drivetrain levers are in the “neutral” position the vehicle’s mechanical brakes are not connected to the wheels; the vehicle may roll on a grade or in response to an applied force (see section 3.7)
+  \item The vehicle is capable of high acceleration and the area around the robot should always be considered a hazard zone, regardless of “current” vehicle speed
+  \item There are many exposed, live electrical terminals and conductors inside the robot
+  \item Manipulation of the drivetrain disconnection levers requires reaching down into the vehicle in an awkward manner that could result in injury, especially if the vehicle moves unexpectedly during manipulation
+  \item In the case of the bilge pumps blowing the 24V fuse, the wireless E-stop will activate due to loss of power, which will turn off the motors and pumps; this could potentially cause damage or danger
+  \item The external suspension linkage at the back of the vehicle presents an unguarded pinch/crush hazard
+  \item External access panel and doors are not interlocked; electrical components may be live and accessible
+  \item Certain accessible internal surfaces such as motor housing may become dangerously hot during operation
+\end{itemize}
+
+
+\subsection{Maneuverability in Water}
+
+Before entering the water it is important to ensure that:
+
+\begin{itemize}[nolistsep]
+  \item Bilge pumps are functioning properly.  See Bilge Pump section on page \pageref{bilgepumps} for more information.
+  \item The side panels and top cover are properly fastened down
+  \item All access panels are fastened down
+\end{itemize}
+
+
+\subsection{Pinch Points}
+
+When operating the Warthog  it is important to maintain a safe distance away from the unit. The suspension seen in \autoref{pinchpoints} has the ability to pivot.  Do not place fingers anywhere along the suspension link as it can result in injury.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.75\linewidth]{graphics/Warthog_pinch_points.jpg}
+  \caption{Warthog Pinch Points}
+  \label{pinchpoints}
+\end{figure}
+
+\pagebreak[4]
+\subsection{Stop Buttons}
+
+The Stop system on the Warthog has two major components: The hardwired Stop switches and the wireless stop remote.
+
+\subsubsection{Hardwired Stop}
+
+Pressing down one of the 4 red mushroom Stop buttons around the Warthog will disable power to the SEVCON devices (Key switch input on PIN 1). This disables the large contactors and also enables the brakes (passive, spring activated when not powered). The status indicator lights around the Warthog will flash red.
+
+To reset a Stop button, the top of the button should be twisted until the button pops out again. The Warthog is fully enabled once a relay click is heard, and the front lights change to white.
+
+\subsubsection{Wireless Remote Stop}
+
+To Operate the Warthog, the wireless e-stop must be disengaged (see section 3.1 for e-stop operation instructions.) If the wireless e-stop looses signal between the remote and the vehicle, the e-stop will engage. The red button on the side of the wireless e-stop remote will also activate the Warthogs e-stop system when pressed.
+
+The e-stop can be programmed to have an automatic timeout of 5, 10 or 15 minutes however it will come programmed to have an unlimmited timout period. See the Autech user manual for more information on how to set an automatic timeout
+
+Always ensure the Stop button is accessible at all times. Avoid mounting payloads that extend over the rear
+of Warthog and would occlude the Stop buttons.
+
+\subsection{Electrical System}
+
+The largest electrical safety consideration with the Warthog system is the VBat connection. As it is pulled straight from the batteries, it may have a voltage of 48V (depleted) - 62V (Charging) and can be used to power large external devices. This voltage can cause electrical shock if directly contacted, and is fused internally with an inline fuse at 10A. In general, take care to connect or disconnect devices preferably only when the entire system is powered off via the external switch on the rear (main power switch).
+
+Take note that triggering a Stop condition only disables voltage to the SEVCON drivers and motors, not the rest of the system which includes the connectors.
+
+The labelled status LEDS on the user panels indicate status of the system voltages. If a LED is not lit, then it's most likely that a system fuse has blown. Contacting Clearpath support is the best option.
+
+To ensure safety, please also observe the following precautions:
+
+\begin{itemize}[nolistsep]
+  \item Do not tamper with the battery terminals or wiring.
+  \item Consult Clearpath Robotics support if you need to service the battery pack.
+  \item Do not lay tools or other objects on top of the battery.
+  \item Do not move the robot while charging the battery.
+  \item Charge the battery only with the charger provided by Clearpath Robotics.
+  \item Please dispose of the batteries properly, or return the batteries to Clearpath Robotics to do so.
+\end{itemize}
+
+\subsection{Recommended Safe Work Procedures}
+
+Clearpath Robotics recommends the following procedures be followed to reduce the likelihood of harm:
+
+\begin{itemize}[nolistsep]
+ \item Maintain a safe distance of at least ten meters from the robot whenever possible
+ \item Never assume that the vehicle can be reliably stopped on command
+ \item Assert a stop using the remote pendant before approaching the vehicle
+ \item Always be vigilant around the vehicle, even when a stop is asserted
+ \item Never operate the vehicle alone, it is recommend to always have 1 operator driving the vehicle, either through the remote control or monitoring navigation software, and an independent operator to control the emergency stop pendant
+ \item Keep hands and fingers away from the suspension linkage components at the rear of the vehicle
+ \item Perform no maintenance or troubleshooting on the vehicle without training and familiarisation
+ \item Follow electrical safety best practices when working with electrical systems and components
+ \item Disconnect battery using main disconnect at rear of vehicle before working inside vehicle
+ \item Wear personal protective equipment including high-visibility clothing, head and eye protection while operating, observing or working on the vehicle
+ \item Never climb on or ride the vehicle
+ \item Never lie on the ground under or near the vehicle
+ \item Never approach the vehicle while it is operating in water
+ \item Avoid operating the vehicle on slopes and grades
+ \item Never stand down-hill of the vehicle
+ \item Never place the remote stop pendant on or inside the vehicle
+ \item Operate the vehicle at the lowest speed possible
+ \item Never attempt to defeat a safety function for any reason
+ \item When working on or around the vehicle always disconnect the motors using the drivetrain levers as described in the user manual
+ \item Chock the vehicle wheels when the robot will be stationary for more than a few seconds
+ \item Never disconnect the vehicle motors using drivetrain levers when on a slope
+ \item Never work on the vehicle on a slope
+ \item Replace fuses only with identical product from specified manufacturer
+ \item Discontinue use and contact Clearpath Robotics support at the first sign of strange vehicle behaviour
+ \item Keep tools and loose parts away from electrical components and out of the robot’s bays
+ \item Do not attempt to move or operate the vehicle while charging the batteries
+ \item Check the functionality of stop systems on a regular basis and before and after each use
+ \item Follow all user manual care instructions
+\end{itemize}
+
 
 
 \section{Getting Started}
 
 The first step is to read this manual and safety warnings.  The next step is to power up your Warthog and have some fun driving it around!
 
-Twist the red power button on the back of Warthog. Once the body lights are flashing red, twist (to reset) all four stop buttons (if necessary), and press go on the Wireless Stop Remote (next section). In a moment, Warthog should go to solid red lights in back, and solid white in front.
+Twist the red power switch on the back of Warthog and disengage with the wireless e-stop. Once the body lights are flashing red, twist (to reset) all four stop buttons (if necessary), and press go on the Wireless Stop Remote (next section). In a moment, Warthog should go to solid red lights in back, and solid white in front.
 
 \subsection{Wireless Stop Remote}
 
-Included with the Warthog is a wireless stop remote. A picture of it is shown in
-\autoref{wireless-stop} below, and it's capable of engaging a safety stop remotely.  The system is designed to enter a stopped state when the remote is not communicating or loses communication with the base. The wireless e-stop remote operates as follows:
+The Warthog comes equipped with a wireless stop remote, which is capable of engaging a safety stop remotely.  A picture of it is shown in
+\autoref{wireless-stop} below.  The system is designed to enter a stopped state when the remote is not communicating or loses communication with the base. The wireless e-stop remote operates as follows:
 
 \begin{enumerate}
   \item Pull the red stop button outwards to disengage it from an e-stop condition.
@@ -255,7 +410,7 @@ Warthog includes four RGB body lights, stacked in a pair on each corner of the c
 
 \subsection{Wireless Access}
 
-To get Warthog connected to your local wifi, you must first access the internal computer using a wired connection. Connect to one of the the network ports with a standard ethernet cable. Now, set your laptop’s ethernet port to a static IP such as \lstinline{192.168.131.51}, and connect via SSH to \lstinline{administrator@192.168.131.1}. The default password is \lstinline{clearpath}.
+To get the Warthog connected to your local wifi, you must first access the internal computer using a wired connection. Connect to one of the network ports with a standard ethernet cable. Now, set your laptop’s ethernet port to a static IP such as \lstinline{192.168.131.123}, and connect via SSH to \lstinline{administrator@192.168.131.1}. The default password is \lstinline{clearpath}.
 
 Now that you're connected via SSH over a wired connection, you can setup Warthog to connect to a local wifi network.  To do this, you will use the wireless interface configuration daemon (WICD) - a preinstalled network manager.
 
@@ -319,12 +474,12 @@ For help troubleshooting a multiple machines connectivity issue, see:
 
 To command or observe Warthog from your desktop computer, first set up a basic ROS installation.  See the following page for details:
 
-\url{http://wiki.ros.org/kinetic/Installation/Ubuntu}
+\url{http://wiki.ros.org/melodic/Installation/Ubuntu}
 
 When your ROS install is set up, install the Warthog desktop packages:
 
 \begin{lstlisting}
-sudo apt-get install ros-kinetic-warthog-desktop
+sudo apt-get install ros-melodic-warthog-desktop
 \end{lstlisting}
 
 Once your remote access to Warthog's ROS master is configured (as above), you can launch rviz, the standard ROS robot visualization tool:
@@ -379,115 +534,12 @@ The Warthog has the ability to be put into neutral which is controlled be the fo
 \end{figure}
 
 
-\section{Safety Considerations}
-
-Warthog is a powerful, heavy, fast moving robotic platform. Please read the following safety information carefully.
-
-\subsection{General Warnings}
-
-For the safety of yourself and others, always conduct initial experiments and software development with the motors not engaged.  Whenever the robot is not being operated and the motors are engaged, keep it in a stop state.  Do not ride on the vehicle, it can accelerate and brake quickly.
-
-When starting out, favour slower wheel speeds. Warthog's control loops can accurately maintain velocities as low as 0.1 m/s. Operating at such speeds will give you more time to react if things don’t go quite as you expect.
-
-When enabling the system using the GO button on the wireless remote, be sure to stand well back from the Warthog. User code running on the Warthog may still be trying to command the motors, and this can result in sudden and unexpected movement of the vehicle. Be prepared to stop the system again using the wireless remote.
-
-
-\subsection{Maneuverability in Water}
-
-Before entering the water it is important to ensure that:
-
-\begin{itemize}[nolistsep]
-  \item Bilge pumps are functioning properly.  See Bilge Pump section on page \pageref{bilgepumps} for more information.
-  \item The side panels and top cover are properly fastened down
-  \item All access panels are fastened down
-\end{itemize}
-
-
-\subsection{Pinch Points}
-
-When operating the Warthog  it is important to maintain a safe distance away from the unit. The suspension seen in \autoref{pinchpoints} has the ability to pivot.  Do not place fingers anywhere along the suspension link as it can result in injury.
-
-\begin{figure}[!htb]
-  \centering
-  \includegraphics[width=0.75\linewidth]{graphics/Warthog_pinch_points.jpg}
-  \caption{Warthog Pinch Points}
-  \label{pinchpoints}
-\end{figure}
-
-\pagebreak[4]
-\subsection{Stop Buttons}
-
-The Stop system on the Warthog has two major components: The hardwired Stop switches and the wireless stop remote.
-
-\subsubsection{Hardwired Stop}
-
-Pressing down one of the 4 red mushroom Stop buttons around the Warthog will disable power to the SEVCON devices (Key switch input on PIN 1). This disables the large contactors and also enables the brakes (passive, spring activated when not powered). The status indicator lights around the Warthog will flash red.
-
-To reset a Stop button, the top of the button should be twisted until the button pops out again. The GO button on Wireless remote must then pressed. The Warthog is fully enabled once a relay click is heard, and the front lights change to white.
-
-\subsubsection{Wireless Remote Stop}
-
-To operate the Warthog, the wireless remote stop also has to be powered on (by holding the Power button for at least 1 second). The remote Stop button toggles the Stop status. It must be pressed once to enable Stop, and pressed again to return to an Stop reset ready state. The GO button on the remote will then reset the stop condition. The wireless remote will shut itself off after 15 minutes of inactivity. Thus, the user is suggested to toggle the reset button (or either AUX 1 or 2) every few minutes to keep the remote awake. This is done to ensure that the user does not forget about the wireless remote, leading to a safety hazard.
-
-Always ensure the Stop button is accessible at all times. Avoid mounting payloads that extend over the rear of Warthog and would occlude the Stop buttons.
-
-\subsection{Electrical System}
-
-The largest electrical safety consideration with the Warthog system is the VBat connection. As it is pulled straight from the batteries, it may have a voltage of 48V (depleted) - 62V (Charging) and can be used to power large external devices. This voltage can cause electrical shock if directly contacted, and is fused internally with an inline fuse at 10A. In general, take care to connect or disconnect devices preferably only when the entire system is powered off via the external switch on the rear (main power switch).
-
-Take note that triggering a Stop condition only disables voltage to the SEVCON drivers and motors, not the rest of the system which includes the connectors.
-
-The labelled status LEDS on the user panels indicate status of the system voltages. If a LED is not lit, then it's most likely that a system fuse has blown. Contacting Clearpath support is the best option.
-
-To ensure safety, please also observe the following precautions:
-
-\begin{itemize}[nolistsep]
-  \item Do not tamper with the battery terminals or wiring.
-  \item Consult Clearpath Robotics support if you need to service the battery pack.
-  \item Do not lay tools or other objects on top of the battery.
-  \item Do not move the robot while charging the battery.
-  \item Charge the battery only with the charger provided by Clearpath Robotics.
-  \item Please dispose of the batteries properly, or return the batteries to Clearpath Robotics to do so.
-\end{itemize}
-
-\subsection{Recommended Safe Work Procedures}
-
-Clearpath Robotics recommends the following procedures be followed to reduce the likelihood of harm:
-
-\begin{itemize}[nolistsep]
- \item Maintain a safe distance of at least ten meters from the robot whenever possible
- \item Never assume that the vehicle can be reliably stopped on command
- \item Assert a stop using the remote pendant before approaching the vehicle
- \item Always be vigilant around the vehicle, even when a stop is asserted
- \item Keep hands and fingers away from the suspension linkage components at the rear of the vehicle
- \item Perform no maintenance or troubleshooting on the vehicle without training and familiarisation
- \item Follow electrical safety best practices when working with electrical systems and components
- \item Disconnect battery using main disconnect at rear of vehicle before working inside vehicle
- \item Wear personal protective equipment including high-visibility clothing, head and eye protection while operating, observing or working on the vehicle
- \item Never climb on or ride the vehicle
- \item Never lie on the ground under or near the vehicle
- \item Never approach the vehicle while it is operating in water
- \item Avoid operating the vehicle on slopes and grades
- \item Never stand down-hill of the vehicle
- \item Never place the remote stop pendant on or inside the vehicle
- \item Operate the vehicle at the lowest speed possible
- \item Never attempt to defeat a safety function for any reason
- \item When working on or around the vehicle always disconnect the motors using the drivetrain levers as described in the user manual
- \item Chock the vehicle wheels when the robot will be stationary for more than a few seconds
- \item Never disconnect the vehicle motors using drivetrain levers when on a slope
- \item Never work on the vehicle on a slope
- \item Replace fuses only with identical product from specified manufacturer
- \item Discontinue use and contact Clearpath Robotics support at the first sign of strange vehicle behaviour
- \item Keep tools and loose parts away from electrical components and out of the robot’s bays
- \item Do not attempt to move or operate the vehicle while charging the batteries
- \item Check the functionality of stop systems on a regular basis and before and after each use
-\end{itemize}
 
 
 
 \section{Payload Integration Guide}
 
-If you want to attach custom hardware to Warthog, you will have to take care of mechnical mounting, electrical supply, and software integration.  This section aims to equip you with respect to these challenges.
+If you want to attach custom hardware to Warthog, you will have to take care of mechanical mounting, electrical supply, and software integration.  This section aims to equip you with respect to these challenges.
 
 \subsection{System Architecture}
 
@@ -590,7 +642,7 @@ Permanent damage resulting from custom modifications to the mounting plate is no
 
 The user power receptacles located in the User Panel are capable of supplying 12Vdc, 24Vdc, and unregulated battery voltage (approximately 48Vdc) for powering Warthog's payloads. See \autoref{userpower} for a labeled illustration and \autoref{userpowerpinout} for the pin assignments. Ensure you select a contact that's appropriate for the gauge of wire used.
 
-The electrical system for the chassis can be seen in \autoref{elec-chassis}. Additionally, left and right drive units electrical system is decribed in \autoref{elec-left} and \autoref{elec-right} respectivelty.
+The electrical system for the chassis can be seen in \autoref{elec-chassis}. Additionally, left and right drive units electrical system is described in \autoref{elec-left} and \autoref{elec-right} respectively.
 
 
 
@@ -671,6 +723,35 @@ Always exercise caution and observe the following safety practices when connecti
   \item When installing additional battery packs, disconnect the ground on all battery packs presently in the unit before connecting the positive terminal of the new battery packs.
 \end{itemize}
 
+\subsection{Lithium Battery Upgrade}
+The following section applies to units with the lithium battery upgrade. The lithium battery upgrade has the added benefits of a longer run time, lighter weight and a longer lifespan. With lithium battery arrays it is especially important to charge the vehicle after use and periodically if it sits for a long period of time, as the batteries need to balance for optimum performance.
+
+The Warthog array is configured in a 4 series by 3 parallel configuration for a total of 12 batteries, therefore inter-battery balancing is critical. Due to differences in the internal series resistance between batteries, the individual state of charge of each battery will vary with respect to the other batteries. When in the bulk charging phase there is no chance to equalize the charge level of each individual battery, thus a balancing phase is required. This balancing (sometimes referred to as equalization) occurs after the main bulk charging phase, and is a phase where lower current from the charger at a constant voltage is applied to the array. The individual battery modules will internally balance themselves (internal cells), but the overall series string will need time to balance between battery modules. The charger should be allowed to remain on and connected for a period of a few hours after the bulk phase. Depending on the imbalance between batteries, this could range anywhere from 2 to 8 hours.
+
+Quick bulk charges can be done if uptime is required, but it is highly recommended to allow for a complete balancing cycle every third charge, minimally, to keep the array well balanced and at peak performance. Not following this recommendation will result in degraded performance and could possibly end in damage to one or more of the batteries prematurely.
+
+The status of each battery can be check in ROS through one of the robots topics. This topic is the '/nec\textunderscore node/modules' topic. To view this topic run the following command:
+
+\begin{lstlisting}
+rostopic echo /nec_node/modules
+\end{lstlisting}
+
+This will begin to stream the data from all 12 batteries. Press 'ctrl+c' to end the streaming of the topic. Data like the remaining battery capacity, cell voltages, individual current output and much more can be found here. It should be noted that there is currently a known issue where one or more of the batteries does not publish its data right away or will intermittently cut out. If this happens during startup or when launching ROS, this topic will not show up. This can sometimes be fixed by restarting ROS or by restarting the robot. This topic has no effect on the vehicles operation in any way! It is there for the user to monitor battery health both instantaneously and over the lifetime of the batteries. To check if the topic has launched, run the following command:
+
+\begin{lstlisting}
+rostopic list
+\end{lstlisting}
+
+This will show all topics currently running on the robot. If the topic is not found then the next thing would be to restart ROS with this command:
+
+\begin{lstlisting}
+sudo systemctl restart ros
+\end{lstlisting}
+
+Enter the password 'clearpath' if prompted. Now you may check again if the topic has launched. This does not guarantee it will and if not then you will have to try again later. For more information on this known issue, please contact Clearpath Robotics any time. We are actively working with the manufacturer to resolve this issue.
+
+
+
 \subsubsection{Long-term Storage}
 
 When storing Warthog for long periods of time, it's important to properly maintain the batteries to fully maximize their life.  Consider one of the following two procedures when placing Warthog in long-term storage:
@@ -683,13 +764,13 @@ When storing Warthog for long periods of time, it's important to properly mainta
 
 Please contact Clearpath Robotics for additional information about Warthog's battery pack.
 
-\subsection{Tread Upgrade}
-If your unit came equipped with the tread upgrade, please keep the following considerations in mind
+\subsection{Track Drive Upgrade}
+If your unit came equipped with the track drive upgrade, please keep the following considerations in mind
 
 \begin{itemize}
-\item The tread drive units pull considerably more current to operate. It is advised to operate a tread Warthog at reduced speeds, either through ROS commands or by reducing the speed scale when operating with the Futaba controller.
+\item The track drive drive units pull considerably more current to operate. It is advised to operate a track drive Warthog at reduced speeds, either through ROS commands or by reducing the speed scale when operating with the Futaba controller.
 \item Due to the increased drive current, expect lower battery life than a wheeled Warthog. It is recommend to drive at reduced speeds to increase battery life.
-\item It is possible to trigger an over current error in the motor controller by increasing speed drastically shortly after resetting a stop condition. The system's body lights will seem as if the unit is ready to drive, however it will not respond to drive commands. To clear this state, simply cycle another stop condition, and ramp up speeds slower.
+\item It is possible to trigger an over current error in the motor controller by increasing speed drastically shortly after resetting a stop condition. The system's body lights will seem as if the unit is ready to drive, however it will not respond to drive commands. To clear this state, simply cycle another stop condition, and reduce the ramp up speeds.
 \end{itemize}
 
 \section{Contact}
