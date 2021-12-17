@@ -96,9 +96,9 @@ The User Panel provides access to the user power panel, as well as USB, serial, 
 
   192.168.131.2 & Ethernet-connected MCU. \\ \hline
 
-  192.168.131.14 & Front-facing LIDAR (optional). \\ \hline
+  192.168.131.20 & Front-facing LIDAR (optional). \\ \hline
 
-  192.168.131.13 & Rear-facing LIDAR (optional). \\ \hline
+  192.168.131.21 & Rear-facing LIDAR (optional). \\ \hline
 
   \end{tabular}
 \newline
@@ -106,6 +106,8 @@ The User Panel provides access to the user power panel, as well as USB, serial, 
 \label{netdevs}
 \end{table}
 \egroup
+
+Typically addresses numbered \lstinline{192.168.131.100} and above will not collide with any of Warthog's payloads.
 
 For more information on electrical integration, please see \autoref{electrical} on page \pageref{electrical}.
 
@@ -146,7 +148,7 @@ Key specifications of Warthog are shown in \autoref{systemspecs}.
   Control Modes & Remote control, computer controlled velocity commands, indoor/outdoor autonomy packages \\ \hline
   Feedback & Battery voltage, motor currents, wheel odometry, control system status, temperature, safety status \\ \hline
   Communication &  Ethernet, USB, Remote Control, Wi-Fi \\ \hline
-  Drivers and APIs  &  Packaged with ROS Kinetic (includes RViz, Gazebo support), Matlab API available \\ \hline
+  Drivers and APIs  &  Packaged with ROS Melodic (includes RViz, Gazebo support), Matlab API available \\ \hline
 
   \end{tabular}
 \newline
@@ -255,7 +257,7 @@ Warthog includes four RGB body lights, stacked in a pair on each corner of the c
 
 \subsection{Wireless Access}
 
-To get Warthog connected to your local wifi, you must first access the internal computer using a wired connection. Connect to one of the the network ports with a standard ethernet cable. Now, set your laptop’s ethernet port to a static IP such as \lstinline{192.168.131.51}, and connect via SSH to \lstinline{administrator@192.168.131.1}. The default password is \lstinline{clearpath}.
+To get Warthog connected to your local wifi, you must first access the internal computer using a wired connection. Connect to one of the the network ports with a standard ethernet cable. Now, set your laptop’s ethernet port to a static IP such as \lstinline{192.168.131.101}, and connect via SSH to \lstinline{administrator@192.168.131.1}. The default password is \lstinline{clearpath}.
 
 Now that you're connected via SSH over a wired connection, you can setup Warthog to connect to a local wifi network.  To do this, you will use the wireless interface configuration daemon (WICD) - a preinstalled network manager.
 
@@ -295,13 +297,13 @@ If your network resolves hostnames properly, connecting should be a matter of ex
 
 \begin{lstlisting}
 export ROS_MASTER_URI=http://cpr-warthog:11311     # Your robot's hostname
-export ROS_IP=192.168.131.1                        # Your computer's wireless IP address
+export ROS_IP=192.168.12.123                       # Your computer's wireless IP address
 \end{lstlisting}
 
 If your network doesn't resolve hostnames, you may need to add the following line to your \lstinline{/etc/hosts} file:
 
 \begin{lstlisting}
-192.168.131.1 cpr-warthog                         # The robot's wireless IP address.
+192.168.131.1    cpr-warthog                       # The robot's wireless IP address and hostname.
 \end{lstlisting}
 
 Once everything is set up correctly, try running \lstinline{rostopic list}. This will verify that your machine can see the robot's ROS master. Then try running \lstinline{rostopic echo /mcu/status}. This will verify that the robot PC can see your machine in order to stream topics to it.
@@ -319,12 +321,12 @@ For help troubleshooting a multiple machines connectivity issue, see:
 
 To command or observe Warthog from your desktop computer, first set up a basic ROS installation.  See the following page for details:
 
-\url{http://wiki.ros.org/kinetic/Installation/Ubuntu}
+\url{http://wiki.ros.org/melodic/Installation/Ubuntu}
 
 When your ROS install is set up, install the Warthog desktop packages:
 
 \begin{lstlisting}
-sudo apt-get install ros-kinetic-warthog-desktop
+sudo apt-get install ros-melodic-warthog-desktop
 \end{lstlisting}
 
 Once your remote access to Warthog's ROS master is configured (as above), you can launch rviz, the standard ROS robot visualization tool:
