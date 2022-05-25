@@ -221,6 +221,10 @@ The left joy stick is used for the forward and reverse motion of the robot and t
   \label{futaba-screen}
 \end{figure}
 
+
+If the Clearpath Robotics Outdoor Navigation software is installed on the Warthog, the Futaba remote controller (RC) must be turned OFF for autonomous missions to be properly executed by the navigation software.
+The Futaba RC will always publish messages to the \lstinline!/rc_teleop/cmd_vel! topic when it is ON, and since it has higher priority than the navigation's \lstinline!/cmd_vel!, the Warthog will not move if autonomous missions are sent and the RC is still ON.
+
 If you’re not seeing any action, check Contact on \autoref{contact} to get in touch with support.
 
 
