@@ -25,8 +25,8 @@
 \RequirePackage{siunitx}
 \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
 
-\setmainfont{Arial}
-\setsansfont{Arial}
+\setmainfont{Helvetica}
+\setsansfont{Helvetica}
 \setmonofont{Consolas}
 \newfontfamily{\titlefont}{DINPro}
 
