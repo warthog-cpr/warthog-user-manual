@@ -18,7 +18,7 @@
 \usepackage{fancyhdr}
 \usepackage{pdfpages}
 \pagestyle{fancyplain}
-\lfoot{Rev. 1.2.0}
+\lfoot{Rev. 1.3.0}
 \rfoot{Warthog UGV}
 \lhead{}
 \chead{}
@@ -43,7 +43,7 @@ Included with each Warthog are the following:
   \begin{itemize}
     \item{Onboard computer}
     \item{User Panel with power, Ethernet, Serial(RS232) and USB connectivity}
-    \item{48V Lead Acid Battery Pack}
+    \item{48V Lead Acid Battery Pack or 48V Lithium Battery Pack}
     \item{Battery Charger}
   \end{itemize}
   \item 1x Futaba Remote Control (R/C)
@@ -64,10 +64,6 @@ Please see \autoref{Warthog_overview} for a view of some of Warthog's key extern
   \caption{Warthog Hardware Overview}
   \label{Warthog_overview}
 \end{figure}
-
-
-
-
 
 \pagebreak[4]
 \subsubsection{Battery Charger}
@@ -140,9 +136,9 @@ Key specifications of Warthog are shown in \autoref{systemspecs}.
   Drive Configuration &  4x4 Skid Steer \\ \hline
   Operating Environment  &  Outdoor \\ \hline
   Traction & 24" Argo tire (24" Turf tire or 12" wide Quad Track System optional) \\ \hline
-  Battery Chemistry & AGM sealed lead acid (Li-ion optional) \\ \hline
-  Capacity &  105 Ah at 48 V, expandable to 200 Ah with Li-ion option \\ \hline
-  Nominal Run Time & Lead acid: 2.5 hrs, Li-ion: 6 hrs \\ \hline
+  Battery Chemistry & AGM sealed lead acid (lithium optional) \\ \hline
+  Capacity &  105 Ah at 48 V, expandable to 200 Ah with lithium option \\ \hline
+  Nominal Run Time & Lead acid: 2.5 hrs, Lithium: 6 hrs \\ \hline
   Charge Time &  4 Hours approx \\ \hline
   User Power & 12 V, 24 V and 48 V Fused at 10A \\ \hline
   Control Modes & Remote control, computer controlled velocity commands, indoor/outdoor autonomy packages \\ \hline
@@ -500,7 +496,7 @@ The largest electrical safety consideration with the Warthog system is the VBat 
 
 Take note that triggering a Stop condition only disables voltage to the SEVCON drivers and motors, not the rest of the system which includes the connectors.
 
-The labelled status LEDS on the user panels indicate status of the system voltages. If a LED is not lit, then it's most likely that a system fuse has blown. Contacting Clearpath support is the best option.
+The labelled status LEDs on the user panels indicate status of the system voltages. If a LED is not lit, then it's most likely that a system fuse has blown. Contacting Clearpath support is the best option.
 
 To ensure safety, please also observe the following precautions:
 
@@ -651,7 +647,7 @@ Permanent damage resulting from custom modifications to the mounting plate is no
 \subsection{Electrical Integration}
 \label{electrical}
 
-The user power receptacles located in the User Panel are capable of supplying 12Vdc, 24Vdc, and unregulated battery voltage (approximately 48Vdc) for powering Warthog's payloads. See \autoref{userpower} for a labeled illustration and \autoref{userpowerpinout} for the pin assignments. Ensure you select a contact that's appropriate for the gauge of wire used. The mating connector for "USER POWER" is \href{https://www.usbfirewire.com/parts/rr-153274-23050.html#RR-153274-23050}{USBFirewire RR-153274-23050} and the mating connector for "SERIAL" is \href{https://www.usbfirewire.com/parts/rr-153274-23040.html#RR-153274-23040}{USBFirewire RR-153274-23040}.
+The user power receptacles located in the User Panel are capable of supplying 12Vdc, 24Vdc, and unregulated battery voltage (approximately 48Vdc) for powering Warthog's payloads. See \autoref{userpower} for a labeled illustration and \autoref{userpowerpinout} for the pin assignments. Ensure you select a contact that's appropriate for the gauge of wire used. The mating connector for ``USER POWER'' is \href{https://www.usbfirewire.com/parts/rr-153274-23050.html#RR-153274-23050}{USBFirewire RR-153274-23050} and the mating connector for ``SERIAL'' is \href{https://www.usbfirewire.com/parts/rr-153274-23040.html#RR-153274-23040}{USBFirewire RR-153274-23040}.
 
 The electrical system for the chassis can be seen in \autoref{elec-chassis}. Additionally, left and right drive units electrical system is decribed in \autoref{elec-left} and \autoref{elec-right} respectivelty.
 
@@ -701,9 +697,6 @@ For continued protection against risk of fire, always replace fuses only with th
   \label{elec-right}
 \end{figure}
 
-
-
-
 \subsection{Software Integration}
 
 ROS has a large ecosystem of sensor drivers, some of which include pre-made URDF description and even simulation configurations.  Please see the following page on the ROS wiki for a partial list:
@@ -716,17 +709,147 @@ For the best experience, consider purchasing supported accessories from Clearpat
 
 \subsection{Battery \& Charging}
 
-\subsubsection{General}
+\subsubsection{Overview}
 
-Warthog contains 48V lead-acid or lithium-ion battery packs. Each battery pack consists of four 12V lead-acid or lithium-ion batteries.
+Warthog contains a 48V lead-acid battery pack, consisting of four 12V lead-acid batteries, or a lithium battery bank, consisting of four 118Ah 12.8V batteries
+connected in a 4S1P configuration with a single Battery Management System (BMS) control unit. Battery configuration may vary with each unit. In order to
+maximize performance, it's important to ensure that the battery level across each set of lead-acid or lithium batteries is within 0.1-0.2V.
+If the battery packs exceed this tolerance, it's advised to charge them to within tolerance before wiring these packs in parallel. The overall battery life
+will vary depending upon the usage of the unit.
 
-Battery configuration may vary with each unit. In order to maximize performance, it's important to ensure that the battery level across each set of lead-acid or lithium-ion batteries is within 0.1-0.2V of each other. If the battery packs exceed this tolerance, it's advised to charge them to within tolerance before wiring these packs
-in parallel. The overall battery life will vary depending upon the usage of the unit.
+\subsubsection{Battery Management System}
+
+\begin{note}
+If your Warthog is equipped with a lead-acid battery pack, you can ignore this section on the Battery Management System.
+\end{note}
+
+If your Warthog is equipped with a lithium battery bank, it is also equipped with a single Battery Management System (BMS) control unit.
+The main function of the BMS is to:
+
+\begin{itemize}[nolistsep]
+  \item Protect the individual modules from being over charged or over discharged.
+  \item Protect the modules from operating outside of their acceptable temperature range.
+  \item Provide status information to higher level systems via a CAN interface.
+  \item Provide independent system management without a higher level control system.
+  \item Provide status, warning and error messages from each of the modules connected to the battery power system.
+  \item Control the charging operation.
+  \item Perform module to module balancing of the system, the battery module will control cell balancing within itself.
+\end{itemize}
+
+There is a main power contactor which is controlled by the BMS unit and is placed in such a way that it controls all power to the system.
+Upon turning on the main disconnect switch:
+
+\begin{enumerate}
+  \item The BMS powers up first and begins communicating with all of the battery modules in the system.
+  \item If they are all present and have no errors the BMS will close the main contactor and allow the Warthog to power up as normal,
+  this process can take a few seconds before the main contactor closes.
+  \begin{enumerate}
+    \item  If all the modules are not present, the system State of Charge (SOC) is too low, or there are errors being reported by any of the
+    modules in the system, the contactor will not close, and the system will not power up.
+  \end{enumerate}
+  \item Similarly, if a user is in discharge mode (the Warthog is in use) and any errors are detected, or if the SOC falls to a cut off point,
+  the contactor will open and remove power from the system to protect the modules.
+  \begin{enumerate}
+    \item It is not good practice to run the SOC to 0\%. This will decrease the life of the battery module. In general, keeping the SOC to a
+    minimum of 30-50\% can increase the lifetime of the batteries.
+    \item As a note, the system SOC is identical to the module with the lowest SOC in the system, so if three modules are at 45\% SOC, and
+    one module is at 25\%, then the SOC of the system is 25\%, and the BMS will act accordingly cutting off power to protect the module with
+    the lowest SOC. Cell balancing and proper charging techniques are important to maintaining good battery health.
+  \end{enumerate}
+  \item The Warthog can be charged when the unit is powered and running, and can also be charged when the unit is not powered (main disconnect switch is open).
+  \begin{enumerate}
+    \item The charger has been configured and wired in a way that the BMS is actually controlling the charger and can turn it off, and on, depending
+    on the status of the charging cycle.
+    \item Even though the unit can be charged while running, this process does not allow for proper cell balancing to occur. It will allow for bulk charge
+    to occur to regain most of the charge in the system, however, repeatedly charging in this manner will allow each module to become out of balance with
+    the other modules. If this process if followed long enough the SOC values for each module can vary by a substantial amount. The larger the variation,
+    the longer it will take to fully balance the system. Therefore it is recommended (depending on use) that at least once every two to three weeks that
+    \textbf{the system be completely charged while the main disconnect switch is in the off position.} Doing so will allow the BMS to go through an
+    equalization phase where the charger is being turned on and off by the BMS to balance the voltages across each cell layer, in each module across the system.
+    \textbf{This is a very important step in maintain battery health, and getting the maximum lifetime out of the battery system.}
+    \item Refer to \autoref{bms_topics} to view the necessary topics through the ROS API.
+  \end{enumerate}
+  \item To allow for this level of control there are three contactors in the system:
+  \begin{enumerate}
+    \item The main contactor for discharge of the system.
+    \item The charge contactor to connect to the output of the charger.
+    \item The charge control relay to turn the charger outputs on and off and control the cell balancing or equalization phase of the charge cycle.
+  \end{enumerate}
+\end{enumerate}
+
+\paragraph{Relevant BMS Rostopics}
+\label{battery_ros}
+
+\autoref{bms_topics} shows a couple topics that will be very useful in monitoring battery health, as discussed in the section above.
+\bgroup
+\begin{table}[htp]
+\centering
+\begin{tabular}{  l  l  p{7cm} }
+\hline
+Topic & Purpose \\ \hline
+
+\lstinline!/bms/system_status! & Primarily to view \lstinline!state_of_charge! (\%)  \\ \hline
+\lstinline!/bms/system_measurements! & Primarily to view \lstinline!battery_system_current! (A) \\ \hline
+
+\end{tabular}
+\caption{BMS ROS API Topics}
+\label{bms_topics}
+\end{table}
+\egroup
+
+The \lstinline{battery_system_current} topic will be positive when the batteries are charging, indicating that current is flowing into the batteries.
+The lights on the charger unit itself will also indicate when the device is charging.
+
+\paragraph{To Connect the Charger}
+
+\begin{enumerate}[nolistsep]
+  \item Plug in the charger DC output cable (heavier gauge cable).
+  \item Plug in the charger auxiliary control cable.
+  \item Plug the charger into AC power (directly to the wall outlet, no extension cords).
+  \item This can be done with or without power on Warthog being on (however the note above applies, at least once every couple of weeks the charge
+  process needs to be allowed to fully balance the system).
+\end{enumerate}
+
+\paragraph{To Disconnect the Charger}
+
+\begin{enumerate}[nolistsep]
+  \item Unplug the charger from AC power.
+  \item Unplug the charger auxiliary cable.
+  \item Unplug the charger DC output cable (heavier gauge cable).
+\end{enumerate}
+
+\paragraph{Battery Pack Specifications}
+
+Key battery system specifications are listed in \autoref{batteryspecs}.
+
+\bgroup
+\def\arraystretch{1.2}%
+\begin{table}[h]
+  \centering
+  \begin{tabular}{>{\columncolor{lightgrey}}>{\raggedright}m{.30\textwidth} p{.70\textwidth}} \hline
+
+  System Voltage ( nominal ) & 51.2V ( up to 59 V while charging ) \\ \hline
+  System Capcity & 118 Ah \\ \hline
+  System Energy & 6.041 kWh \\ \hline
+  Continuous Discharge Current & 150 A \\ \hline
+  Peak Discharge Current ( 30 sec ) & 300 A \\ \hline
+  Discharge Temperature Range & -10 °C to 50 °C \\ \hline
+  Charge Temperature Range & 0 °C to 45 °C \\ \hline
+
+  \end{tabular}
+\newline
+\caption{Lithium Battery Pack Specifications}
+\label{batteryspecs}
+\end{table}
+\egroup
+
+
+\subsubsection{General Battery Safety and Maintenance}
 
 Always exercise caution and observe the following safety practices when connecting, disconnecting or handling batteries:
 
 \begin{itemize}[nolistsep]
-  \item Batteries are high voltage, high current
+  \item Batteries are high voltage, high current.
   \item Battery packs must be properly fastened down to ensure they do not move when the Warthog is in operation.
   \item Ensure that the battery packs are evenly distributed throughout the Warthog to maximize stability.
   \item Battery levels on the unit should be checked on a regular basis.  It's important to maintain the battery voltage at a suitable level for proper operation.
@@ -736,13 +859,11 @@ Always exercise caution and observe the following safety practices when connecti
 
 \subsubsection{Long-term Storage}
 
-When storing Warthog for long periods of time, it's important to properly maintain the batteries to fully maximize their life.  Consider one of the following two procedures when placing Warthog in long-term storage:
+When storing Warthog for long periods of time, it's important to properly maintain the batteries to fully maximize their life.  Consider the following procedure when placing Warthog in long-term storage:
 
 \begin{itemize}[nolistsep]
   \item Fully charge Warthog, turn it off and put it into storage.  Once a week, connect power to the charger and allow the charger to top up the battery for an hour or so.
-  \item Fully charge Warthog, turn it off and put it into storage, but leave the charger connected and powered the entire time Warthog is in storage.  The charger will monitor the battery and will automatically charge it up as needed.
 \end{itemize}
-
 
 Please contact Clearpath Robotics for additional information about Warthog's battery pack.
 
