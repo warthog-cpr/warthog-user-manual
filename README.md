@@ -1,6 +1,7 @@
 Warthog User Manual
 ==================
-
+ # **NOTE: These tutorials have been superceded. Find the latest Warthog user manual at [docs.clearpathrobotics.com](https://docs.clearpathrobotics.com/docs/robots/outdoor_robots/warthog/user_manual_warthog/).**
+ 
 This repository contains the LaTeX source code for building the end user product
 documentation for [Warthog](http://www.clearpathrobotics.com/warthog/). If you are
 an end user, please download the official and released version of the manual from
